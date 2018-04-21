@@ -10,6 +10,8 @@ public class BallInput : MonoBehaviour {
   private float maxCharge = 500;
   [SerializeField]
   private float chargeRate = 0.1f;
+  [SerializeField]
+  private ChargeShotUI chargeShotUi;
 
   bool preparedToPlayGolf;
   bool mouseDown;
@@ -26,7 +28,6 @@ public class BallInput : MonoBehaviour {
   {
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
-    Debug.Log("READY TO GOLF!");
   }
 
   // Update is called once per frame
@@ -35,6 +36,7 @@ public class BallInput : MonoBehaviour {
     {
       preparedToPlayGolf = false;
       mousePress();
+      chargeShotUi.EnableCharge(true);
     }
 
     if (mouseDown)
@@ -59,10 +61,8 @@ public class BallInput : MonoBehaviour {
 
     mouseDown = false;
     GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
+    chargeShotUi.EnableCharge(false); 
     StartCoroutine(waitToReturnPlayerControl());
-
-    Debug.Log("GOLF FINISHED!");
-
   }
 
   private void getDirection() {
@@ -81,7 +81,7 @@ public class BallInput : MonoBehaviour {
 
   private IEnumerator waitToReturnPlayerControl()
   {
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(1f);
     GameController.Instance.PlayerMovementTurn();
   }
 
@@ -89,7 +89,7 @@ public class BallInput : MonoBehaviour {
   {
     if (chargingUpwards)
     {
-      currentCharge += chargeRate;
+      currentCharge += (chargeRate + currentCharge/20);
       if (currentCharge >= maxCharge)
       {
         currentCharge = maxCharge;
@@ -98,13 +98,14 @@ public class BallInput : MonoBehaviour {
     }
     else
     {
-      currentCharge -= chargeRate;
+      currentCharge -= (chargeRate + currentCharge/20);
       if (currentCharge <= minCharge)
       {
         currentCharge = minCharge;
         chargingUpwards = true;
       }
     }
+    chargeShotUi.SetCharge(currentCharge, maxCharge);
   }
 
   private void OnDrawGizmos()
@@ -113,14 +114,6 @@ public class BallInput : MonoBehaviour {
     {
       Gizmos.color = Color.red;
       Gizmos.DrawRay(transform.position, -finalDirection);
-    }
-  }
-
-  private void OnGUI()
-  {
-    if (mouseDown)
-    {
-      GUI.Label(new Rect(10, 10, 200, 20), "Charging... " + currentCharge);
     }
   }
 }

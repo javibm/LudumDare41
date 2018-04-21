@@ -1,20 +1,89 @@
 fileFormatVersion: 2
-guid: 84a240f8915b71e409520082cab3e481
-timeCreated: 1524317739
+guid: cf12ef9e1fab07345a9fa1122eaf1a80
+timeCreated: 1524335695
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: 'Material #46'
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Modulo_llano
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: Bone004
+    100008: Bone005
+    100010: Bone006
+    100012: Bone007
+    100014: Bone008
+    100016: Bone009
+    100018: Bone010
+    100020: Bone011
+    100022: Bone012
+    100024: Bone013
+    100026: Bone014
+    100028: Bone015
+    100030: Bone016
+    100032: Bone017
+    100034: Bone018
+    100036: Bone019
+    100038: Bone020
+    100040: Bone021
+    100042: Bone022
+    100044: Bone023
+    100046: Bone024
+    100048: Bone025
+    100050: Bone026
+    100052: Bone027
+    100054: Bone028
+    100056: Bone029
+    100058: Bone_root
+    100060: //RootNode
+    100062: IK Chain001
+    100064: IK Chain002
+    100066: IK Chain003
+    100068: IK Chain004
+    100070: raptor
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: Bone004
+    400008: Bone005
+    400010: Bone006
+    400012: Bone007
+    400014: Bone008
+    400016: Bone009
+    400018: Bone010
+    400020: Bone011
+    400022: Bone012
+    400024: Bone013
+    400026: Bone014
+    400028: Bone015
+    400030: Bone016
+    400032: Bone017
+    400034: Bone018
+    400036: Bone019
+    400038: Bone020
+    400040: Bone021
+    400042: Bone022
+    400044: Bone023
+    400046: Bone024
+    400048: Bone025
+    400050: Bone026
+    400052: Bone027
+    400054: Bone028
+    400056: Bone029
+    400058: Bone_root
+    400060: //RootNode
+    400062: IK Chain001
+    400064: IK Chain002
+    400066: IK Chain003
+    400068: IK Chain004
+    400070: raptor
+    2100000: 'Material #47'
+    4300000: raptor
     9500000: //RootNode
+    13700000: raptor
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -39,22 +108,22 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
-    importBlendShapes: 0
-    importCameras: 0
-    importLights: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -67,7 +136,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -86,7 +155,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
