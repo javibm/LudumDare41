@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 20610950915754720}
   - component: {fileID: 124435595069620158}
   - component: {fileID: 81185080904447108}
+  - component: {fileID: 114805490504818522}
+  - component: {fileID: 114888963688526286}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377488241782924}
   m_LocalRotation: {x: -0.09904573, y: 0.8923992, z: -0.23911768, w: -0.36964363}
-  m_LocalPosition: {x: 10, y: 4, z: 10}
+  m_LocalPosition: {x: 16.63, y: 6.32, z: 20.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +61,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -85,6 +87,50 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377488241782924}
   m_Enabled: 1
+--- !u!114 &114805490504818522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377488241782924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54806f4ca5d8c4e39a35950627864b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  minZoom: 2.5
+  normalZoom: 5
+  timeTransition: 1
+--- !u!114 &114888963688526286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377488241782924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 6cc4fedf8d1624809bb2712531071bb8, type: 2}
 --- !u!124 &124435595069620158
 Behaviour:
   m_ObjectHideFlags: 1

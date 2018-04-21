@@ -13,7 +13,6 @@ public class BallMovement : MonoBehaviour {
 
   public void MoveBall(Vector3 forceDirection)
   {
-    Debug.Log(forceDirection);
     ballRigidbody.AddForce(forceDirection);
   }
 
