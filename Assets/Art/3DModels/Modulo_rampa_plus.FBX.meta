@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: badbb95e27d7d544585442f133d64fde
-timeCreated: 1524322192
+guid: e5ef4196dc2414b5eacdf463f14f4def
+timeCreated: 1524331535
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,12 +10,11 @@ ModelImporter:
     2100000: 'Material #46'
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Modulo_vacio
-    4300002: Modulo vacio002
+    4300000: Modulo_rampa_plus
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
