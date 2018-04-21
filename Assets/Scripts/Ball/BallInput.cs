@@ -88,7 +88,6 @@ public class BallInput : MonoBehaviour {
       finalDirection = hitPoint - transform.position;
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
-
       player.gameObject.transform.position = transform.position + (finalDirection * 0.5f);
       player.gameObject.transform.LookAt(transform.position);
     }
