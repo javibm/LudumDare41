@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 79fe2abff915e9a44877d6bb12271fed
-timeCreated: 1524335695
+guid: 4cba0ea87fb9a44329b7230b945f0969
+timeCreated: 1524337477
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -75,7 +75,7 @@ ModelImporter:
     400064: IK Chain002
     400066: IK Chain003
     400068: IK Chain004
-    7400000: Lanzar
+    7400000: Idle01
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -105,17 +105,17 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Lanzar
+      name: Idle01
       takeName: Take 001
-      firstFrame: 17
-      lastFrame: 44
+      firstFrame: 61
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

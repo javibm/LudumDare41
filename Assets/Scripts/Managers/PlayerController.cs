@@ -19,7 +19,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
+                GameController.Instance.PlayerRun();
                 transform.position += Time.deltaTime * speed * transform.forward;
+            }
+            else
+            {
+                GameController.Instance.PlayerStop();
             }
         }
     }
