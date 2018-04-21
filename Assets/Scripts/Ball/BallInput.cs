@@ -25,17 +25,14 @@ public class BallInput : MonoBehaviour {
   private Plane plane = new Plane(Vector3.up, Vector3.zero);
   private PlayerController playerController;
 
-  void OnTriggerEnter(Collider other)
+  public void StartGolfGame(PlayerController playerController)
   {
-    if (other.CompareTag("Player"))
+    if (!this.playerController)
     {
-      if (!playerController)
-      {
-        playerController = other.GetComponent<PlayerController>();
-      }
-      playerController.StopMovement();
-      preparedToPlayGolf = true;
+      this.playerController = playerController;
     }
+    this.playerController.StopMovement();
+    preparedToPlayGolf = true;
   }
 
   // Update is called once per frame

@@ -25,24 +25,54 @@ GameObject:
   - component: {fileID: 54184993132420166}
   - component: {fileID: 114967515015534242}
   - component: {fileID: 114403371727943176}
-  - component: {fileID: 135549016920662488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1290854718524510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4280161844151302}
+  - component: {fileID: 135698398979598942}
+  - component: {fileID: 114536700356887016}
+  m_Layer: 0
+  m_Name: BallTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4280161844151302
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290854718524510}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4891254150898396}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4891254150898396
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183898293514910}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.3209996, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_Children: []
+  m_LocalRotation: {x: -0.000000001629814, y: -0.76525223, z: 0.000000009313222, w: 0.64373046}
+  m_LocalPosition: {x: 4.34, y: 0.57, z: 4.23}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children:
+  - {fileID: 4280161844151302}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,6 +147,18 @@ MonoBehaviour:
   maxCharge: 1
   chargeRate: 0.1
   ballForce: 500
+--- !u!114 &114536700356887016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290854718524510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8252e068c24724d8a3aa2e5ddbef16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballInput: {fileID: 114403371727943176}
 --- !u!114 &114967515015534242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,12 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49493750a6e9934d87441ba590e7e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135549016920662488
+--- !u!135 &135698398979598942
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183898293514910}
+  m_GameObject: {fileID: 1290854718524510}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
