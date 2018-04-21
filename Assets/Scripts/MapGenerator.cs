@@ -158,6 +158,10 @@ public class MapGenerator : MonoBehaviour
 
 	private void InstantiateTile (int prefabIndex, int x, int z, int yIndex, int rotIndex)
 	{
+		if(_tilePrefabs[prefabIndex].randomRotation)
+		{
+			rotIndex = UnityEngine.Random.Range(0, _tileRotations.Length);
+		}
 		Vector3 position = new Vector3(x, _tileHeights[yIndex], z);
 		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
 		MapTile mt = Instantiate(_tilePrefabs[prefabIndex].GetRandomVariant(), position, Quaternion.Euler(rotation));
@@ -201,6 +205,8 @@ public class MapGenerator : MonoBehaviour
 	{
 		[SerializeField]
 		private List<MapTile> variants;
+		[SerializeField]
+		public bool randomRotation;
 		public MapTile GetRandomVariant()
 		{
 			return variants[UnityEngine.Random.Range(0,variants.Count)];
