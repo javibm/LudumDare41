@@ -19,7 +19,7 @@ public class BallMovement : MonoBehaviour {
 
   public void StopMovement()
   {
-    ballRigidbody.velocity = Vector3.zero;
+    ballRigidbody.velocity        = Vector3.zero;
     ballRigidbody.angularVelocity = Vector3.zero;
 
   }
