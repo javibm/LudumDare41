@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114403371727943176}
   m_Layer: 8
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183898293514910}
-  m_LocalRotation: {x: -0.000000001629814, y: -0.76525223, z: 0.000000009313222, w: 0.64373046}
-  m_LocalPosition: {x: 4.34, y: 0.57, z: 4.23}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 4280161844151302}
@@ -125,7 +125,7 @@ Rigidbody:
   m_GameObject: {fileID: 1183898293514910}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
