@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
         camera = GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        camera.orthographicSize = normalZoom;
+        camera.orthographicSize = minZoom;
 
         zoomOffset = normalZoom - minZoom;
     }
