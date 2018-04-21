@@ -24,24 +24,24 @@ public class BallInput : MonoBehaviour {
 
   private Plane plane = new Plane(Vector3.up, Vector3.zero);
 
-  // Use this for initialization
-  void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
+  void OnTriggerEnter(Collider other)
+  {
+    if (other.CompareTag("Player"))
+    {
+      Debug.LogError("PLAYER AQUÍ");
+      currentCharge = 0;
+      mouseDown = true;
+    }
+  }
+
+  // Update is called once per frame
+  void Update () {
     if (mouseDown)
     {
       getDirection();
       chargeShot();
     }
 	}
-
-  private void OnMouseDown() {
-    currentCharge = 0;
-    mouseDown = true;
-
-  }
 
   private void OnMouseUp() {
     mouseDown = false;
