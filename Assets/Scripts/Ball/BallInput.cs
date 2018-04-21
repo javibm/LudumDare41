@@ -54,6 +54,7 @@ public class BallInput : MonoBehaviour {
 
   private void mousePress()
   {
+    GameController.Instance.BallShot();
     mouseDown = true;
     currentCharge = 0;
   }
