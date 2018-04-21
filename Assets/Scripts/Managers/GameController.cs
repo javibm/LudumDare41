@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameController : Singleton<GameController>
 {
     public static event Action OnStartGame = delegate { };
+    public static event Action OnPlayerRunning = delegate { };
+    public static event Action OnPlayerStop = delegate { };
     public static event Action OnPlayerMovementTurn = delegate { };
     public static event Action OnMinigolfTurn = delegate { };
     public static event Action OnEndGame = delegate { };
@@ -30,6 +32,16 @@ public class GameController : Singleton<GameController>
     public void PlayerMovementTurn()
     {
         OnPlayerMovementTurn();
+    }
+
+    public void PlayerRun()
+    {
+        OnPlayerRunning();
+    }
+
+    public void PlayerStop()
+    {
+        OnPlayerStop();
     }
 
     public void MinigolfTurn()

@@ -19,10 +19,10 @@ public class MapGenerator : MonoBehaviour
 	public void Init()
 	{
 		string mapText = LoadMap();
-		GenerateMap(mapText);
-		
 		_goalRow = 14;
 		_goalCol = 14;
+		
+		GenerateMap(mapText);
 		_currentDestructionRadius = CalculateMaxDestructionRadius();		
 	}
 	private int _currentDestructionRadius;
@@ -138,6 +138,10 @@ public class MapGenerator : MonoBehaviour
 			row += _tileSeparation;
 			col = 0;
 		}
+
+		MapTile goalTile = GetMapTile(_goalRow, _goalCol);
+		Instantiate(_goalPrefab, goalTile.transform.position, Quaternion.identity);
+		goalTile.transform.SetParent(goalTile.transform);
 	}
 
 	private MapTile GetMapTile (int row, int col)
@@ -214,6 +218,9 @@ public class MapGenerator : MonoBehaviour
 
 	[SerializeField]
 	private List<MapTileVariants> _tilePrefabs;
+
+	[SerializeField]
+	private GameObject _goalPrefab;
 
 	private List<MapTile> _mapTiles;
 	private int _mapCols;

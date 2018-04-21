@@ -400,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4833479469529846}
   - component: {fileID: 95288590816660372}
+  - component: {fileID: 114981450368430462}
   m_Layer: 0
   m_Name: char_raptor
   m_TagString: Untagged
@@ -1124,7 +1125,7 @@ Animator:
   m_GameObject: {fileID: 1577179181285644}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cf12ef9e1fab07345a9fa1122eaf1a80, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b321e4aa46874ef99a69ddf06e66bfb, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1145,6 +1146,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   speedRotation: 16
+--- !u!114 &114981450368430462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577179181285644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc15df53fb3400d92beed1d3916a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136826936885551080
 CapsuleCollider:
   m_ObjectHideFlags: 1
