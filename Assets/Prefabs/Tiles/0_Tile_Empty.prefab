@@ -147,8 +147,8 @@ MonoBehaviour:
     m_RotationOrder: 0
   tweenerType: 0
   startDelay: 0
-  duration: 0.3
-  finalOffset: {x: 0, y: -10, z: 0}
+  duration: 0.6
+  finalOffset: {x: 0, y: -4, z: 0}
 --- !u!114 &114481352658832076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   tweenerType: 0
   startDelay: 0
-  duration: 0.3
+  duration: 0.6
   initialLocalScale: {x: 1, y: 1, z: 1}
   finalLocalScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114580362795474646
