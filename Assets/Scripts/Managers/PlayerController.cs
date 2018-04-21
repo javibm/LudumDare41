@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
                 GameController.Instance.PlayerStop();
             }
         }
+
+      if (transform.position.y < -1.5)
+      {
+        GameController.Instance.EndGame();
+      }
     }
 
     void FixedUpdate()

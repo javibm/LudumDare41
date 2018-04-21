@@ -23,7 +23,7 @@ public class MapGenerator : MonoBehaviour
 		_goalCol = 14;
 		
 		GenerateMap(mapText);
-		_currentDestructionRadius = CalculateMaxDestructionRadius();		
+    _currentDestructionRadius = CalculateMaxDestructionRadius();		
 	}
 	private int _currentDestructionRadius;
 
@@ -164,16 +164,6 @@ public class MapGenerator : MonoBehaviour
 		_mapTiles.Add(mt);
 		mt.transform.SetParent(transform);
 	}
-
-  private void GenerateVoid()
-  {
-    GameObject endVoid = new GameObject();
-    endVoid.transform.parent = transform.parent;
-    BoxCollider endVoidCollider = endVoid.AddComponent<BoxCollider>();
-    endVoidCollider.isTrigger = true;
-
-    endVoidCollider.size = new Vector3(_mapRows, 1, 1);
-  }
 
 	void OnGUI ()
 	{

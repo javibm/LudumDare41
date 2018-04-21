@@ -50,6 +50,11 @@ public class BallInput : MonoBehaviour {
         mouseRelease();
       }
     }
+
+    if (transform.position.y < -1.5)
+    {
+      GameController.Instance.EndGame();
+    }
 	}
 
   private void mousePress()
