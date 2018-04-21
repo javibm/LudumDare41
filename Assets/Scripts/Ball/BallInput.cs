@@ -61,8 +61,8 @@ public class BallInput : MonoBehaviour {
   private void mouseRelease() {
     GameController.Instance.BallShot();
     mouseDown = false;
-    GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
-    chargeShotUi.EnableCharge(false); 
+    chargeShotUi.EnableCharge(false);
+    StartCoroutine(waitToApplyForce());
     StartCoroutine(waitToReturnPlayerControl());
   }
 
@@ -77,7 +77,12 @@ public class BallInput : MonoBehaviour {
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
     }
+  }
 
+  private IEnumerator waitToApplyForce()
+  {
+    yield return new WaitForSeconds(0.5f);
+    GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
   }
 
   private IEnumerator waitToReturnPlayerControl()

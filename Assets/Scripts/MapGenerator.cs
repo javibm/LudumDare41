@@ -161,6 +161,15 @@ public class MapGenerator : MonoBehaviour
 		mt.transform.SetParent(transform);
 	}
 
+  private void GenerateVoid()
+  {
+    GameObject endVoid = new GameObject();
+    endVoid.transform.parent = transform.parent;
+    BoxCollider endVoidCollider = endVoid.AddComponent<BoxCollider>();
+
+    //endVoidCollider.size.x = _mapRows; 
+  }
+
 	void OnGUI ()
 	{
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
