@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f6c1afa996c6145b5d071d2144f482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  speedRotation: 4
+  speed: 2
+  speedRotation: 16
 --- !u!136 &136826936885551080
 CapsuleCollider:
   m_ObjectHideFlags: 1
