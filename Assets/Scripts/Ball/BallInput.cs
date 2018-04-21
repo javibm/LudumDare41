@@ -14,7 +14,7 @@ public class BallInput : MonoBehaviour {
   [SerializeField]
   private float ballForce = 500;
 
-
+  bool preparedToPlayGolf;
   bool mouseDown;
 
   Vector3 finalDirection;
@@ -29,19 +29,22 @@ public class BallInput : MonoBehaviour {
   {
     if (other.CompareTag("Player"))
     {
-      currentCharge = 0;
-      mouseDown = true;
-
       if (!playerController)
       {
         playerController = other.GetComponent<PlayerController>();
       }
       playerController.StopMovement();
+      preparedToPlayGolf = true;
     }
   }
 
   // Update is called once per frame
   void Update () {
+    if (preparedToPlayGolf && Input.GetMouseButtonDown(0))
+    {
+      preparedToPlayGolf = false;
+      mousePress();
+    }
     if (mouseDown)
     {
       getDirection();
@@ -53,6 +56,12 @@ public class BallInput : MonoBehaviour {
       }
     }
 	}
+
+  private void mousePress()
+  {
+    mouseDown = true;
+    currentCharge = 0;
+  }
 
   private void mouseRelease() {
     mouseDown = false;
