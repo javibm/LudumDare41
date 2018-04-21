@@ -14,6 +14,16 @@ public class MapGenerator : MonoBehaviour
 		GenerateMap();
 	}
 
+	private void DestroyMap ()
+	{
+		for (int i = 0; i < _mapTiles.Count; i++)
+		{
+			Destroy(_mapTiles[i].gameObject);
+			_mapTiles[i] = null;
+		}
+		_mapTiles.Clear();
+	}
+
 	private void GenerateMap ()
 	{
 		Vector3 _tilePos = Vector3.zero;
@@ -30,10 +40,24 @@ public class MapGenerator : MonoBehaviour
 		}
 	}
 
-	private MapTile InstantiateTile (int prefabIndex, Vector3 position)
+	private void InstantiateTile (int prefabIndex, Vector3 position)
 	{
-		return Instantiate(_tilePrefabs[prefabIndex], position, Quaternion.identity);
+		MapTile mt = Instantiate(_tilePrefabs[prefabIndex], position, Quaternion.identity);
+		_mapTiles.Add(mt);
+		mt.transform.SetParent(transform);
 	}
+
+	void OnGUI ()
+	{
+		if (GUI.Button(new Rect(10, 10, 150, 100), "Regenerate!"))
+		{
+			DestroyMap();
+			GenerateMap();      
+    }
+	}
+
+	[SerializeField]
+	private string _mapString; 
 
 
 	[SerializeField]
