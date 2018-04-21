@@ -17,6 +17,13 @@ public class BallMovement : MonoBehaviour {
     ballRigidbody.AddForce(forceDirection);
   }
 
+  public void StopMovement()
+  {
+    ballRigidbody.velocity = Vector3.zero;
+    ballRigidbody.angularVelocity = Vector3.zero;
+
+  }
+
   private void Update()
   {
     if (ballRigidbody.velocity.y != 0)
