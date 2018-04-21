@@ -54,13 +54,12 @@ public class BallInput : MonoBehaviour {
 
   private void mousePress()
   {
-    GameController.Instance.BallShot();
     mouseDown = true;
     currentCharge = 0;
   }
 
   private void mouseRelease() {
-
+    GameController.Instance.BallShot();
     mouseDown = false;
     GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
     chargeShotUi.EnableCharge(false); 
