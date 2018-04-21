@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1183898293514910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4280161844151302}
   m_Father: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minCharge: 0
-  maxCharge: 1
+  maxCharge: 5
   chargeRate: 0.1
   ballForce: 500
 --- !u!114 &114536700356887016
