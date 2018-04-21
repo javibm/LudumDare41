@@ -23,14 +23,20 @@ public class BallInput : MonoBehaviour {
   float currentCharge;
 
   private Plane plane = new Plane(Vector3.up, Vector3.zero);
+  private PlayerController playerController;
 
   void OnTriggerEnter(Collider other)
   {
     if (other.CompareTag("Player"))
     {
-      Debug.LogError("PLAYER AQUÍ");
       currentCharge = 0;
       mouseDown = true;
+
+      if (!playerController)
+      {
+        playerController = other.GetComponent<PlayerController>();
+      }
+      playerController.StopMovement();
     }
   }
 
@@ -40,13 +46,19 @@ public class BallInput : MonoBehaviour {
     {
       getDirection();
       chargeShot();
+
+      if (Input.GetMouseButtonUp(0))
+      {
+        mouseRelease();
+      }
     }
 	}
 
-  private void OnMouseUp() {
+  private void mouseRelease() {
     mouseDown = false;
 
     GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce);
+    playerController.ResumeMovement();
   }
 
   private void getDirection() {
