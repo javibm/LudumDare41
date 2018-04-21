@@ -11,10 +11,12 @@ public class BallInput : MonoBehaviour {
   [SerializeField]
   private float chargeRate = 0.1f;
 
+  [SerializeField]
+  private float ballForce = 500;
+
 
   bool mouseDown;
 
-  Vector3 initialMousePosition;
   Vector3 finalDirection;
 
   bool chargingUpwards = true;
@@ -31,6 +33,7 @@ public class BallInput : MonoBehaviour {
     if (mouseDown)
     {
       getDirection();
+      chargeShot();
     }
 	}
 
@@ -38,13 +41,12 @@ public class BallInput : MonoBehaviour {
     currentCharge = 0;
     mouseDown = true;
 
-    initialMousePosition = Input.mousePosition;
   }
 
   private void OnMouseUp() {
     mouseDown = false;
 
-    GetComponent<BallMovement>().MoveBall(-finalDirection * 1000);
+    GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce);
   }
 
   private void getDirection() {
