@@ -283,6 +283,11 @@ Prefab:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 20610950915754720, guid: c118d11abafbc314b8250017438d6da3,
+        type: 2}
+      propertyPath: near clip plane
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c118d11abafbc314b8250017438d6da3, type: 2}
   m_IsPrefabParent: 0
