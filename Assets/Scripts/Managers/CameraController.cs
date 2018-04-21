@@ -68,6 +68,12 @@ public class CameraController : MonoBehaviour
         camera.orthographicSize = normalZoom;
     }
 
+    void OnDestroy()
+    {
+        GameController.OnPlayerMovementTurn -= ZoomIn;
+        GameController.OnMinigolfTurn -= ZoomOut;
+    }
+
     [SerializeField]
     private AnimationCurve zoomCurve;
     [SerializeField]
