@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33376617592594358}
   - component: {fileID: 23549334123658386}
   - component: {fileID: 95845450962814284}
+  - component: {fileID: 65877071045359750}
   m_Layer: 0
   m_Name: Modulo_llano
   m_TagString: Untagged
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 84a240f8915b71e409520082cab3e481, type: 3}
+  - {fileID: 2100000, guid: c9afdc955961eff4284db30ddf6d26a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +114,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608491832363632}
   m_Mesh: {fileID: 4300000, guid: 84a240f8915b71e409520082cab3e481, type: 3}
+--- !u!65 &65877071045359750
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608491832363632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 0.30000004}
+  m_Center: {x: 0, y: 0, z: -0.15000002}
 --- !u!95 &95845450962814284
 Animator:
   serializedVersion: 3

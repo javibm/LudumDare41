@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -56,7 +57,7 @@ public class MapGenerator : MonoBehaviour
 	{
 		Vector3 position = new Vector3(x, _tileHeights[yIndex], z);
 		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
-		MapTile mt = Instantiate(_tilePrefabs[prefabIndex], position, Quaternion.Euler(rotation));
+		MapTile mt = Instantiate(_tilePrefabs[prefabIndex].GetRandomVariant(), position, Quaternion.Euler(rotation));
 		_mapTiles.Add(mt);
 		mt.transform.SetParent(transform);
 	}
@@ -79,12 +80,23 @@ public class MapGenerator : MonoBehaviour
 		return mapText;
   }
 
-
-
 	[SerializeField]
 	private int _tileSeparation = 1;
+
+
+	[Serializable]
+	private class MapTileVariants
+	{
+		[SerializeField]
+		private List<MapTile> variants;
+		public MapTile GetRandomVariant()
+		{
+			return variants[UnityEngine.Random.Range(0,variants.Count)];
+		}
+	}
+
 	[SerializeField]
-	private List<MapTile> _tilePrefabs;
+	private List<MapTileVariants> _tilePrefabs;
 
 	private List<MapTile> _mapTiles;
 
