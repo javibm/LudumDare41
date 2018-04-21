@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54184993132420166}
   - component: {fileID: 114967515015534242}
   - component: {fileID: 114403371727943176}
+  - component: {fileID: 114070281450307602}
   m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
@@ -68,9 +69,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183898293514910}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0.000000001629814, y: -0.76525223, z: 0.000000009313222, w: 0.64373046}
+  m_LocalPosition: {x: 4.34, y: 0.57, z: 6.53}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4280161844151302}
   m_Father: {fileID: 0}
@@ -90,7 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 65df4c63b40594a83acbd4f550e3d0b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,7 +117,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183898293514910}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 747adaebdd7850740ad1ff6b16517259, type: 3}
 --- !u!54 &54184993132420166
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -132,6 +133,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114070281450307602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183898293514910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697a98d5a3607412c936edf3ce543d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targetIconOffScreen: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_edgeBuffer: 10
+  m_targetIconScale: {x: 0.2, y: 0.2, z: 0.2}
+  PointTarget: 0
+  ShowDebugLines: 0
 --- !u!114 &114403371727943176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,7 +196,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135706879681144588
 SphereCollider:
@@ -187,9 +204,9 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183898293514910}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0177be69235045d4aa61d80930aaa290, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.02
   m_Center: {x: 0, y: 0, z: 0}
