@@ -81,6 +81,8 @@ public class BallInput : MonoBehaviour {
       finalDirection = hitPoint - transform.position;
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
+
+      playerController.transform.position = hitPoint;
     }
   }
 
