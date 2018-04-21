@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minCharge: 10
-  maxCharge: 500
+  maxCharge: 1000
   chargeRate: 10
   chargeShotUi: {fileID: 0}
 --- !u!114 &114536700356887016
