@@ -8,7 +8,12 @@ public class BallTriggerComponent : MonoBehaviour {
 
   private Collider trigger;
 
-  private void OnEnabled()
+  private void Start()
+  {
+    trigger = GetComponent<Collider>();
+  }
+
+  private void OnEnable()
   {
     GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
     GameController.OnPlayerMovementTurn += OnPlayerMovementTurnHandler;
@@ -37,5 +42,4 @@ public class BallTriggerComponent : MonoBehaviour {
   {
     trigger.enabled = true;
   }
-
 }

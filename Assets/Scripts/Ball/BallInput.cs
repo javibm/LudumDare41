@@ -12,6 +12,10 @@ public class BallInput : MonoBehaviour {
   private float chargeRate = 0.1f;
   [SerializeField]
   private ChargeShotUI chargeShotUi;
+  [SerializeField]
+  private ArrowSprite arrowSprite;
+
+  private Vector3 lastPosition;
 
   bool preparedToPlayGolf;
   bool mouseDown;
@@ -25,6 +29,16 @@ public class BallInput : MonoBehaviour {
 
   private Plane plane = new Plane(Vector3.up, Vector3.zero);
 
+  void OnEnable()
+  {
+    GameController.OnResetBallPosition += OnResetLastPosition;
+  }
+
+  void OnDisable()
+  {
+    GameController.OnResetBallPosition -= OnResetLastPosition;
+  }
+
   public void StartGolfGame(PlayerController playerController)
   {
     if (player == null)
@@ -32,9 +46,9 @@ public class BallInput : MonoBehaviour {
       player = playerController;
     }
     GetComponent<BallMovement>().StopMovement();
-    GetComponent<BallMovement>().StopMovement();
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
+    lastPosition = transform.position;
   }
 
   // Update is called once per frame
@@ -59,7 +73,7 @@ public class BallInput : MonoBehaviour {
 
     if (transform.position.y < -1.5)
     {
-      GameController.Instance.EndGame();
+      GameController.Instance.ResetBallPosition();
     }
 	}
 
@@ -88,9 +102,9 @@ public class BallInput : MonoBehaviour {
       finalDirection = hitPoint - transform.position;
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
-      player.gameObject.transform.position = transform.position + (finalDirection * 0.5f);
-      player.gameObject.transform.LookAt(transform.position);
     }
+
+    arrowSprite.RotateArrow(finalDirection.x);
   }
 
   private IEnumerator waitToApplyForce()
@@ -134,6 +148,12 @@ public class BallInput : MonoBehaviour {
     {
       Gizmos.color = Color.red;
       Gizmos.DrawRay(transform.position, -finalDirection);
+      Gizmos.DrawRay(transform.position, Vector3.Normalize(player.transform.forward));
     }
+  }
+
+  private void OnResetLastPosition()
+  {
+    transform.position = lastPosition;
   }
 }

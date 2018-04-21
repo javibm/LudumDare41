@@ -13,8 +13,9 @@ public class GameController : Singleton<GameController>
     public static event Action OnMinigolfTurn = delegate { };
     public static event Action OnEndGame = delegate { };
     public static event Action OnBallShot = delegate { };
+    public static event Action OnResetBallPosition = delegate { };
 
-    protected new void Awake()
+  protected new void Awake()
     {
         base.Awake();
     }
@@ -52,6 +53,11 @@ public class GameController : Singleton<GameController>
     public void BallShot()
     {
         OnBallShot();
+    }
+
+    public void ResetBallPosition()
+    {
+        OnResetBallPosition();
     }
 
     public void EndGame()
