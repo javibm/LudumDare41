@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     {
         shouldMove = true;
     }
+    void Start()
+    {
+        GameController.OnMinigolfTurn += StopMovement;
+        GameController.OnPlayerMovementTurn += ResumeMovement;
+    }
     void Update()
     {
         if (shouldMove)
