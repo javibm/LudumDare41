@@ -11,17 +11,21 @@ public class BallInput : MonoBehaviour {
   [SerializeField]
   private float chargeRate = 0.1f;
 
+  [SerializeField]
+  private float ballForce = 500;
+
 
   bool mouseDown;
 
-  Vector3 initialMousePosition;
   Vector3 finalDirection;
 
   bool chargingUpwards = true;
   float currentCharge;
 
-	// Use this for initialization
-	void Start () {
+  private Plane plane = new Plane(Vector3.up, Vector3.zero);
+
+  // Use this for initialization
+  void Start () {
 	}
 	
 	// Update is called once per frame
@@ -29,29 +33,34 @@ public class BallInput : MonoBehaviour {
     if (mouseDown)
     {
       getDirection();
-
       chargeShot();
-
-      Debug.LogError(currentCharge);
     }
 	}
 
   private void OnMouseDown() {
     currentCharge = 0;
     mouseDown = true;
-    initialMousePosition = Input.mousePosition;
+
   }
 
   private void OnMouseUp() {
     mouseDown = false;
 
-    GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
+    GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce);
   }
 
   private void getDirection() {
-    finalDirection = Input.mousePosition - initialMousePosition;
-    finalDirection.z = finalDirection.y;
-    finalDirection.y = 0;
+    var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+    float enter;
+    if (plane.Raycast(ray, out enter))
+    {
+      var hitPoint = ray.GetPoint(enter);
+      finalDirection = hitPoint - transform.position;
+      finalDirection = Vector3.Normalize(finalDirection);
+      finalDirection.y = 0;
+    }
+
   }
 
   private void chargeShot()
