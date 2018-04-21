@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
 
         camera.orthographicSize = normalZoom;
 
-        offset = transform.position - player.transform.position;
         zoomOffset = normalZoom - minZoom;
     }
 
@@ -85,9 +84,7 @@ public class CameraController : MonoBehaviour
 
     private GameObject player;
 
-    private Vector3 offset;
-
-    private Camera camera;
+    private new Camera camera;
 
     private float zoomOffset;
 }
