@@ -144,9 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minCharge: 0
-  maxCharge: 1
+  maxCharge: 500
   chargeRate: 0.1
-  ballForce: 500
 --- !u!114 &114536700356887016
 MonoBehaviour:
   m_ObjectHideFlags: 1
