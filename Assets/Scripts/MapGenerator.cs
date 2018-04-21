@@ -13,12 +13,100 @@ public class MapGenerator : MonoBehaviour
 
 	void Start ()
 	{
+		Init();
+	}
+
+	public void Init()
+	{
 		string mapText = LoadMap();
 		GenerateMap(mapText);
+		
+		_goalRow = 14;
+		_goalCol = 14;
+		_currentDestructionRadius = CalculateMaxDestructionRadius();		
+	}
+	private int _currentDestructionRadius;
+
+	private int CalculateMaxDestructionRadius()
+	{
+		int a = System.Math.Max(_goalRow, _goalCol);
+		int b = System.Math.Max(_mapRows - 1 - _goalRow, _mapCols - 1 - _goalCol);
+		return System.Math.Max(a,b);
+	}
+
+	private void DestroyBorderTiles (int row, int col, bool random)
+	{
+		List<MapTile> tiles = GetTilesInRadius(row, col,_currentDestructionRadius);
+		StartCoroutine(DeactivateTilesCorroutine(tiles, random));
+		_currentDestructionRadius--;
+	}
+
+	private List<MapTile> GetTilesInRadius (int row, int col, int radius)
+	{
+		List<MapTile> tiles = new List<MapTile>();
+		MapTile mt;
+		for(int i = -radius; i < radius; i++)
+		{
+			mt = GetMapTile(row - radius, col + i);
+			if (mt != null)
+			{
+				tiles.Add(mt);
+			}
+		}
+		for(int i = -radius; i < radius; i++)
+		{
+			mt = GetMapTile(row + i, col + radius);
+			if (mt != null)
+			{
+				tiles.Add(mt);
+			}
+		}
+		for(int i = radius; i > -radius; i--)
+		{
+			mt = GetMapTile(row + radius, col + i);
+			if (mt != null)
+			{
+				tiles.Add(mt);
+			}
+		}
+		for(int i = radius; i > -radius; i--)
+		{
+			mt = GetMapTile(row + i, col - radius);
+			if (mt != null)
+			{
+				tiles.Add(mt);
+			}
+		}
+		return tiles;
+	}
+
+	private IEnumerator DeactivateTilesCorroutine (List<MapTile> tiles, bool random)
+	{
+		while (tiles.Count > 0)
+		{
+			int tileToDeactivate = random ? UnityEngine.Random.Range(0, tiles.Count) : 0;
+			tiles[tileToDeactivate].Deactivate();
+			tiles.RemoveAt(tileToDeactivate);
+			yield return new WaitForSeconds (0.03f);
+		}
+	}
+
+	private IEnumerator DestroyMapCorroutine ()
+	{
+		while (true)
+		{
+			MapTile mt = GetMapTile(UnityEngine.Random.Range(0, _mapRows), UnityEngine.Random.Range(0, _mapCols));
+			if(mt != null)
+			{
+				mt.Deactivate();
+			}
+			yield return new WaitForSeconds(0.1f);
+		}
 	}
 
 	private void DestroyMap ()
 	{
+		StopAllCoroutines();
 		for (int i = 0; i < _mapTiles.Count; i++)
 		{
 			Destroy(_mapTiles[i].gameObject);
@@ -29,25 +117,36 @@ public class MapGenerator : MonoBehaviour
 
 	private void GenerateMap (string mapText)
 	{
-		int x = 0;
-		int z = 0;
+		int row = 0;
+		int col = 0;
 		string[] rows = mapText.Split('\n');
+		_mapRows = rows.Length;
 
-		for (int i = 0; i < rows.Length; i++)
+		for (int i = 0; i < _mapRows; i++)
 		{
 			string[] tiles = rows[i].Split('-');
-			for (int j = 0; j < tiles.Length; j++)
+			_mapCols = tiles.Length;
+			for (int j = 0; j < _mapCols; j++)
 			{
 				string[] tileData = tiles[j].Split(',');
 				int prefabIndex = int.Parse(tileData[0]);
 				int yIndex = int.Parse(tileData[1]);
 				int rotIndex = int.Parse(tileData[2]);
-				InstantiateTile(prefabIndex, x, z, yIndex, rotIndex);
-				z += _tileSeparation;
+				InstantiateTile(prefabIndex, row, col, yIndex, rotIndex);
+				col += _tileSeparation;
 			}
-			x += _tileSeparation;
-			z = 0;
+			row += _tileSeparation;
+			col = 0;
 		}
+	}
+
+	private MapTile GetMapTile (int row, int col)
+	{
+		if (row < 0 || row >= _mapRows || col < 0 || col >= _mapCols)
+		{
+			return null;
+		}
+		return _mapTiles[_mapCols * row + col];
 	}
 
 	private float[] _tileHeights = new float[] {0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f};
@@ -64,11 +163,20 @@ public class MapGenerator : MonoBehaviour
 
 	void OnGUI ()
 	{
-		if (GUI.Button(new Rect(10, 10, 100, 70), "Regenerate!"))
+		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{
 			DestroyMap();
-			string mapText = LoadMap();
-			GenerateMap(mapText);
+			Init();
+    }
+
+		if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
+		{
+			DestroyBorderTiles(_goalRow, _goalCol, false);
+    }
+
+		if (GUI.Button(new Rect(100, 50, 80, 30), "Destroy 2"))
+		{
+			DestroyBorderTiles(_goalRow, _goalCol, true);
     }
 	}
 
@@ -99,6 +207,11 @@ public class MapGenerator : MonoBehaviour
 	private List<MapTileVariants> _tilePrefabs;
 
 	private List<MapTile> _mapTiles;
+	private int _mapCols;
+	private int _mapRows;
+
+	private int _goalRow;
+	private int _goalCol;
 
 	private string _mapPath = "Assets/Resources/Map.txt";
 }
