@@ -169,5 +169,5 @@ MonoBehaviour:
     type: 3}
   m_edgeBuffer: 10
   m_targetIconScale: {x: 0.2, y: 0.2, z: 0.2}
-  PointTarget: 1
+  PointTarget: 0
   ShowDebugLines: 0
