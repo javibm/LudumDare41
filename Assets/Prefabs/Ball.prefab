@@ -160,9 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a09c6d82ae1e34786f02e146daf326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCharge: 0
+  minCharge: 10
   maxCharge: 500
   chargeRate: 10
+  chargeShotUi: {fileID: 0}
 --- !u!114 &114536700356887016
 MonoBehaviour:
   m_ObjectHideFlags: 1

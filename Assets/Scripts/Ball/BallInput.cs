@@ -10,6 +10,8 @@ public class BallInput : MonoBehaviour {
   private float maxCharge = 500;
   [SerializeField]
   private float chargeRate = 0.1f;
+  [SerializeField]
+  private ChargeShotUI chargeShotUi;
 
   bool preparedToPlayGolf;
   bool mouseDown;
@@ -35,6 +37,7 @@ public class BallInput : MonoBehaviour {
     {
       preparedToPlayGolf = false;
       mousePress();
+      chargeShotUi.EnableCharge(true);
     }
 
     if (mouseDown)
@@ -60,6 +63,7 @@ public class BallInput : MonoBehaviour {
     mouseDown = false;
     GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
     StartCoroutine(waitToReturnPlayerControl());
+    chargeShotUi.EnableCharge(false);
 
     Debug.Log("GOLF FINISHED!");
 
@@ -81,7 +85,7 @@ public class BallInput : MonoBehaviour {
 
   private IEnumerator waitToReturnPlayerControl()
   {
-    yield return new WaitForSeconds(0.3f);
+    yield return new WaitForSeconds(1f);
     GameController.Instance.PlayerMovementTurn();
   }
 
@@ -89,7 +93,7 @@ public class BallInput : MonoBehaviour {
   {
     if (chargingUpwards)
     {
-      currentCharge += chargeRate;
+      currentCharge += (chargeRate + currentCharge/20);
       if (currentCharge >= maxCharge)
       {
         currentCharge = maxCharge;
@@ -98,13 +102,14 @@ public class BallInput : MonoBehaviour {
     }
     else
     {
-      currentCharge -= chargeRate;
+      currentCharge -= (chargeRate + currentCharge/20);
       if (currentCharge <= minCharge)
       {
         currentCharge = minCharge;
         chargingUpwards = true;
       }
     }
+    chargeShotUi.SetCharge(currentCharge, maxCharge);
   }
 
   private void OnDrawGizmos()

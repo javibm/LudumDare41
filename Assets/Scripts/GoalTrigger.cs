@@ -23,7 +23,6 @@ public class GoalTrigger : MonoBehaviour {
       if (ballRigidbody.velocity.magnitude < velocityMagnitudeWin)
       {
         Debug.LogError("TERMINÓ");
-        //GameController.Instance.EndGame();
       }
     }
   }
