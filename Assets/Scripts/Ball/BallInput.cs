@@ -26,6 +26,7 @@ public class BallInput : MonoBehaviour {
 
   public void StartGolfGame(PlayerController playerController)
   {
+    GetComponent<BallMovement>().StopMovement();
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
   }
