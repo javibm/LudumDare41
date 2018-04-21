@@ -138,7 +138,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.97238165, b: 0.89705884, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -266,11 +266,6 @@ Prefab:
     - target: {fileID: 4199941808232088, guid: 8e6fce8d01fe5d64d942e723a2ad9792, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
-        type: 2}
-      propertyPath: _tilePrefabs.Array.data[3]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e6fce8d01fe5d64d942e723a2ad9792, type: 2}
