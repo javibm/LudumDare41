@@ -313,5 +313,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialIndex: 0
-  uvAnimationRate: {x: 0, y: 0.5}
+  uvAnimationRate: {x: 0, y: 0.1}
   textureName: _MainTex
