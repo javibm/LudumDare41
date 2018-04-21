@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        transform.position = player.transform.position;
+        transform.position = player.transform.position + new Vector3(6.0f, 6.0f, 6.0f);
     }
 
     private void ZoomIn()
