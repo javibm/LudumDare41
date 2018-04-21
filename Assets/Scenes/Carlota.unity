@@ -113,26 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &12557689 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1557206668700570, guid: f950521738507ad4c94cf15cd853ba84,
-    type: 2}
-  m_PrefabInternal: {fileID: 1517524464}
---- !u!54 &12557695
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 12557689}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 62
-  m_CollisionDetection: 0
 --- !u!1 &155969316
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +735,11 @@ Prefab:
         type: 2}
       propertyPath: chargeRate
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54184993132420166, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22c90aef8538ad54c9cbba64424c69f7, type: 2}
