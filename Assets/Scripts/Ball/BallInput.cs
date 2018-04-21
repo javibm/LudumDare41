@@ -56,11 +56,10 @@ public class BallInput : MonoBehaviour {
   }
 
   private void mouseRelease() {
+
     mouseDown = false;
-
-
     GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
-    GameController.Instance.PlayerMovementTurn();
+    StartCoroutine(waitToReturnPlayerControl());
 
     Debug.Log("GOLF FINISHED!");
 
@@ -78,6 +77,12 @@ public class BallInput : MonoBehaviour {
       finalDirection.y = 0;
     }
 
+  }
+
+  private IEnumerator waitToReturnPlayerControl()
+  {
+    yield return new WaitForSeconds(0.3f);
+    GameController.Instance.PlayerMovementTurn();
   }
 
   private void chargeShot()
