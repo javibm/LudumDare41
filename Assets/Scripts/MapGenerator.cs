@@ -170,8 +170,9 @@ public class MapGenerator : MonoBehaviour
     GameObject endVoid = new GameObject();
     endVoid.transform.parent = transform.parent;
     BoxCollider endVoidCollider = endVoid.AddComponent<BoxCollider>();
+    endVoidCollider.isTrigger = true;
 
-    //endVoidCollider.size.x = _mapRows; 
+    endVoidCollider.size = new Vector3(_mapRows, 1, 1);
   }
 
 	void OnGUI ()

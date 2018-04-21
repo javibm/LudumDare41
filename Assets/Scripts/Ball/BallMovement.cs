@@ -23,12 +23,4 @@ public class BallMovement : MonoBehaviour {
     ballRigidbody.angularVelocity = Vector3.zero;
 
   }
-
-  private void Update()
-  {
-    if (ballRigidbody.velocity.y != 0)
-    {
-      Debug.Log("VELOCIDAD EN Y NO SÉ POR QUÉ!");
-    }
-  }
 }
