@@ -28,7 +28,6 @@ public class BallInput : MonoBehaviour {
   {
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
-    Debug.Log("READY TO GOLF!");
   }
 
   // Update is called once per frame
@@ -62,11 +61,8 @@ public class BallInput : MonoBehaviour {
 
     mouseDown = false;
     GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
+    chargeShotUi.EnableCharge(false); 
     StartCoroutine(waitToReturnPlayerControl());
-    chargeShotUi.EnableCharge(false);
-
-    Debug.Log("GOLF FINISHED!");
-
   }
 
   private void getDirection() {
@@ -118,14 +114,6 @@ public class BallInput : MonoBehaviour {
     {
       Gizmos.color = Color.red;
       Gizmos.DrawRay(transform.position, -finalDirection);
-    }
-  }
-
-  private void OnGUI()
-  {
-    if (mouseDown)
-    {
-      GUI.Label(new Rect(10, 10, 200, 20), "Charging... " + currentCharge);
     }
   }
 }
