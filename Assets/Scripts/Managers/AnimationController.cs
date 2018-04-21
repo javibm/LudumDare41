@@ -41,6 +41,15 @@ public class AnimationController : MonoBehaviour
         animator.SetBool(hitBallBool, true);
     }
 
+    void OnDestroy()
+    {
+        GameController.OnPlayerMovementTurn -= GoToRun;
+        GameController.OnMinigolfTurn -= GoToGolf;
+        GameController.OnBallShot -= GoToHit;
+        GameController.OnPlayerRunning -= GoToRun;
+        GameController.OnPlayerStop -= GoToIdle;
+    }
+
 
     private Animator animator;
     private int golfingBool = Animator.StringToHash("Golfing");
