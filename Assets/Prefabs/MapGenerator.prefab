@@ -58,7 +58,12 @@ MonoBehaviour:
   - variants:
     - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
     - {fileID: 114085060222648934, guid: f472170aa4994e44982e273dccc22e8c, type: 2}
+    - {fileID: 114639854961424742, guid: e845b8a64aa0a7c47ad72fbe49ca0645, type: 2}
+    - {fileID: 114932725212535050, guid: a1cdf2351e0435d4eaa47af4d7a90c9d, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
   - variants:
     - {fileID: 114537248978287300, guid: 7c7d0c03809bd234589b495e98f2c9e5, type: 2}
   - variants:
     - {fileID: 114769757377582388, guid: f8e085ca5daff0a45884eb8403805b43, type: 2}
+  - variants:
+    - {fileID: 114645714653478448, guid: 0790df464d8a0c04db02a0b454bd98f3, type: 2}
