@@ -27,11 +27,7 @@ public class BallInput : MonoBehaviour {
 
   public void StartGolfGame(PlayerController playerController)
   {
-    if (!this.playerController)
-    {
-      this.playerController = playerController;
-    }
-    this.playerController.StopMovement();
+    GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
   }
 
@@ -64,7 +60,7 @@ public class BallInput : MonoBehaviour {
     mouseDown = false;
 
     GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce);
-    playerController.ResumeMovement();
+    GameController.Instance.PlayerMovementTurn();
   }
 
   private void getDirection() {
