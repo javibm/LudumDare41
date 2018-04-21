@@ -20,15 +20,10 @@ public class GoalTrigger : MonoBehaviour {
   {
     if (other.CompareTag("Ball"))
     {
-      Debug.Log(ballRigidbody.velocity.magnitude);
       if (ballRigidbody.velocity.magnitude < velocityMagnitudeWin)
       {
         Debug.LogError("TERMINÓ");
         //GameController.Instance.EndGame();
-      }
-      else
-      {
-        Debug.Log("CASI!");
       }
     }
   }

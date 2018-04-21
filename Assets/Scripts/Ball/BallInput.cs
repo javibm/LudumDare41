@@ -29,15 +29,17 @@ public class BallInput : MonoBehaviour {
   {
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
+    Debug.Log("READY TO GOLF!");
   }
 
   // Update is called once per frame
   void Update () {
-    if (preparedToPlayGolf && Input.GetMouseButtonDown(0))
+    if (!mouseDown && preparedToPlayGolf && Input.GetMouseButtonDown(0))
     {
       preparedToPlayGolf = false;
       mousePress();
     }
+
     if (mouseDown)
     {
       getDirection();
@@ -59,8 +61,12 @@ public class BallInput : MonoBehaviour {
   private void mouseRelease() {
     mouseDown = false;
 
-    GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce);
+
+    GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce * currentCharge);
     GameController.Instance.PlayerMovementTurn();
+
+    Debug.Log("GOLF FINISHED!");
+
   }
 
   private void getDirection() {
