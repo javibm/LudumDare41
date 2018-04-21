@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 4362515318580520}
   - component: {fileID: 33376617592594358}
   - component: {fileID: 23549334123658386}
-  - component: {fileID: 95845450962814284}
   m_Layer: 0
   m_Name: Modulo_llano
   m_TagString: Untagged
@@ -85,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256706052413656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4362515318580520}
@@ -200,23 +199,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95845450962814284
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608491832363632}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 84a240f8915b71e409520082cab3e481, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114085060222648934
 MonoBehaviour:
   m_ObjectHideFlags: 1
