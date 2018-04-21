@@ -75,4 +75,13 @@ public class BallInput : MonoBehaviour {
       }
     }
   }
+
+  private void OnDrawGizmos()
+  {
+    if (mouseDown)
+    {
+      Gizmos.color = Color.red;
+      Gizmos.DrawRay(transform.position, -finalDirection);
+    }
+  }
 }
