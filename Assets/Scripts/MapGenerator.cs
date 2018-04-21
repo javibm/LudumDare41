@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour 
@@ -11,7 +12,8 @@ public class MapGenerator : MonoBehaviour
 
 	void Start ()
 	{
-		GenerateMap();
+		string mapText = LoadMap();
+		GenerateMap(mapText);
 	}
 
 	private void DestroyMap ()
@@ -24,46 +26,67 @@ public class MapGenerator : MonoBehaviour
 		_mapTiles.Clear();
 	}
 
-	private void GenerateMap ()
+	private void GenerateMap (string mapText)
 	{
-		Vector3 _tilePos = Vector3.zero;
+		int x = 0;
+		int z = 0;
+		string[] rows = mapText.Split('\n');
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < rows.Length; i++)
 		{
-			for (int j = 0; j < 10; j++)
+			string[] tiles = rows[i].Split('-');
+			for (int j = 0; j < tiles.Length; j++)
 			{
-				InstantiateTile(Random.Range(0, _tilePrefabs.Count), _tilePos);
-				_tilePos.z += _tileSeparation;
+				string[] tileData = tiles[j].Split(',');
+				int prefabIndex = int.Parse(tileData[0]);
+				int yIndex = int.Parse(tileData[1]);
+				int rotIndex = int.Parse(tileData[2]);
+				InstantiateTile(prefabIndex, x, z, yIndex, rotIndex);
+				z += _tileSeparation;
 			}
-			_tilePos.x += _tileSeparation;
-			_tilePos.z = 0;
+			x += _tileSeparation;
+			z = 0;
 		}
 	}
 
-	private void InstantiateTile (int prefabIndex, Vector3 position)
+	private float[] _tileHeights = new float[] {0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f};
+	private float[] _tileRotations = new float[] {0f, 90f, 180f, 270f};
+
+	private void InstantiateTile (int prefabIndex, int x, int z, int yIndex, int rotIndex)
 	{
-		MapTile mt = Instantiate(_tilePrefabs[prefabIndex], position, Quaternion.identity);
+		Vector3 position = new Vector3(x, _tileHeights[yIndex], z);
+		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
+		MapTile mt = Instantiate(_tilePrefabs[prefabIndex], position, Quaternion.Euler(rotation));
 		_mapTiles.Add(mt);
 		mt.transform.SetParent(transform);
 	}
 
 	void OnGUI ()
 	{
-		if (GUI.Button(new Rect(10, 10, 150, 100), "Regenerate!"))
+		if (GUI.Button(new Rect(10, 10, 100, 70), "Regenerate!"))
 		{
 			DestroyMap();
-			GenerateMap();      
+			string mapText = LoadMap();
+			GenerateMap(mapText);
     }
 	}
 
-	[SerializeField]
-	private string _mapString; 
+	private string LoadMap()
+  {	
+		StreamReader reader = new StreamReader(_mapPath); 
+		string mapText = reader.ReadToEnd();
+		reader.Close();
+		return mapText;
+  }
 
 
+
 	[SerializeField]
-	private float _tileSeparation = 1f;
+	private int _tileSeparation = 1;
 	[SerializeField]
 	private List<MapTile> _tilePrefabs;
 
 	private List<MapTile> _mapTiles;
+
+	private string _mapPath = "Assets/Resources/Map.txt";
 }
