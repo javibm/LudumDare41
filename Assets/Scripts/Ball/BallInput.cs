@@ -7,12 +7,9 @@ public class BallInput : MonoBehaviour {
   [SerializeField]
   private float minCharge = 0;
   [SerializeField]
-  private float maxCharge = 1;
+  private float maxCharge = 500;
   [SerializeField]
   private float chargeRate = 0.1f;
-
-  [SerializeField]
-  private float ballForce = 500;
 
   bool preparedToPlayGolf;
   bool mouseDown;
@@ -62,7 +59,7 @@ public class BallInput : MonoBehaviour {
     mouseDown = false;
 
 
-    GetComponent<BallMovement>().MoveBall(-finalDirection * ballForce * currentCharge);
+    GetComponent<BallMovement>().MoveBall(-finalDirection * currentCharge);
     GameController.Instance.PlayerMovementTurn();
 
     Debug.Log("GOLF FINISHED!");
@@ -111,6 +108,14 @@ public class BallInput : MonoBehaviour {
     {
       Gizmos.color = Color.red;
       Gizmos.DrawRay(transform.position, -finalDirection);
+    }
+  }
+
+  private void OnGUI()
+  {
+    if (mouseDown)
+    {
+      GUI.Label(new Rect(10, 10, 200, 20), "Charging... " + currentCharge);
     }
   }
 }
