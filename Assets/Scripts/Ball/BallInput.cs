@@ -21,11 +21,17 @@ public class BallInput : MonoBehaviour {
   bool chargingUpwards = true;
   float currentCharge;
 
+  private PlayerController player;
+
   private Plane plane = new Plane(Vector3.up, Vector3.zero);
-  private PlayerController playerController;
 
   public void StartGolfGame(PlayerController playerController)
   {
+    if (player == null)
+    {
+      player = playerController;
+    }
+    GetComponent<BallMovement>().StopMovement();
     GetComponent<BallMovement>().StopMovement();
     GameController.Instance.MinigolfTurn();
     preparedToPlayGolf = true;
@@ -72,6 +78,7 @@ public class BallInput : MonoBehaviour {
   }
 
   private void getDirection() {
+
     var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
     float enter;
@@ -81,6 +88,9 @@ public class BallInput : MonoBehaviour {
       finalDirection = hitPoint - transform.position;
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
+
+      player.gameObject.transform.position = transform.position + (finalDirection * 0.5f);
+      player.gameObject.transform.LookAt(transform.position);
     }
   }
 
