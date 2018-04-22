@@ -143,6 +143,17 @@ public class BallInput : MonoBehaviour {
 
   private void OnResetLastPosition()
   {
+    RaycastHit hit;
+    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+    {
+      transform.position = lastPosition;
+      Debug.Log("Did Hit", this);
+    }
+    else
+    {
+      transform.position = player.transform.position;
+      Debug.Log("Did not hit", this);
+    }
     transform.position = lastPosition;
   }
 }
