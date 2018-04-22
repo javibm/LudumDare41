@@ -13,19 +13,29 @@ public class MapGenerator : MonoBehaviour
 
 	void Start ()
 	{
-		
+
 	}
 
-	public void Init(int goalRow, int goalCol)
+	public void Init(int goalRow, int goalCol, float destructionTime)
 	{
 		string mapText = LoadMap();
 		_goalRow = goalRow;
 		_goalCol = goalRow;
+		_destructionTime = destructionTime;
 		GenerateMap(mapText);
-    _currentDestructionRadius = CalculateMaxDestructionRadius();		
+    _currentDestructionRadius = CalculateMaxDestructionRadius();
+		StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
 	}
-	private int _currentDestructionRadius;
 
+	private IEnumerator DestroyWorldCorroutine (float destructionTime)
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(destructionTime);
+			DestroyBorderTiles(_goalRow, _goalCol, false);
+		}
+	}
+	
 	private int CalculateMaxDestructionRadius()
 	{
 		int a = System.Math.Max(_goalRow, _goalCol);
@@ -173,7 +183,7 @@ public class MapGenerator : MonoBehaviour
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{
 			DestroyMap();
-			Init(_goalRow, _goalCol);
+			Init(_goalRow, _goalCol, _destructionTime);
     }
 
 		if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
@@ -224,6 +234,9 @@ public class MapGenerator : MonoBehaviour
 
 	private int _goalRow;
 	private int _goalCol;
+	private float _destructionTime;
+
+	private int _currentDestructionRadius;
 
 	private string _mapPath = "Assets/Resources/Map.txt";
 }

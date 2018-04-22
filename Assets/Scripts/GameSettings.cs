@@ -5,6 +5,13 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "GameSettings")]
 public class GameSettings : ScriptableObject 
 {
+	public float DestructionTime
+	{
+		get
+		{
+			return _destructionTime;
+		}
+	}
 	public List<LevelSettings> Levels
 	{
 		get
@@ -22,6 +29,8 @@ public class GameSettings : ScriptableObject
 		public int GoalCol;
 	}
 	
+	[SerializeField]
+	private float _destructionTime = 2f;
 	[SerializeField]
 	private List<LevelSettings> _levels;
 }

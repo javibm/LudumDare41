@@ -27,7 +27,7 @@ public class GameController : Singleton<GameController>
 
   public void StartGame()
   {
-    _mapGenerator.Init(_gameSettings.Levels[0].GoalRow, _gameSettings.Levels[0].GoalCol);
+    _mapGenerator.Init(_gameSettings.Levels[0].GoalRow, _gameSettings.Levels[0].GoalCol, _gameSettings.DestructionTime);
     OnStartGame();
   }
 
