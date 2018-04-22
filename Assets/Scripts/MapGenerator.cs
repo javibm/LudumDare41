@@ -231,7 +231,17 @@ public class MapGenerator : MonoBehaviour
 
   private void ChangeSkybox()
   {
-    RenderSettings.skybox.SetColor("Color 2", _skyboxDoomColor);
+    if (RenderSettings.skybox.HasProperty("Color 2"))
+    {
+      Debug.Log("Color 2");
+    }
+    RenderSettings.skybox.SetColor("Color 2", Color.black);
+    Debug.LogError(RenderSettings.skybox.GetColor("Color 2"));
+  }
+
+  private void Update()
+  {
+    DynamicGI.UpdateEnvironment();
   }
 
   void OnGUI ()
