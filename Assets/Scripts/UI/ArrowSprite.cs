@@ -11,6 +11,8 @@ public class ArrowSprite : MonoBehaviour {
   private float maxScale;
   [SerializeField]
   private Image arrow;
+  [SerializeField]
+  private Image arrow2;
 
   private float originalScale;
   private Canvas canvas;
@@ -58,8 +60,9 @@ public class ArrowSprite : MonoBehaviour {
 
   public void ScaleArrow(float current, float min, float max)
   {
-    float scale = Mathf.Lerp(minScale, maxScale, current / max) * originalScale;
-    canvasRectTransform.localScale = new Vector3(scale, scale, scale);
+    arrow2.fillAmount = current / max;
+    //float scale = Mathf.Lerp(minScale, maxScale, current / max) * originalScale;
+    //canvasRectTransform.localScale = new Vector3(scale, scale, scale);
   }
 
 }
