@@ -47,11 +47,13 @@ public class MapGenerator : MonoBehaviour
 
 	private IEnumerator DestroyWorldCorroutine (float destructionTime)
 	{
-
+		float init = _currentDestructionRadius;
 		while (true)
 		{
 			yield return new WaitForSeconds(destructionTime);
-      ChangeSkybox();
+      //ChangeSkybox();
+			RenderSettings.skybox.SetFloat("_DayFactor", Mathf.Lerp(0, 1, 1 - _currentDestructionRadius / init));
+			DynamicGI.UpdateEnvironment();
 			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
 		}
 	}
