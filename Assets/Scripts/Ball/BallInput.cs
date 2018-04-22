@@ -144,8 +144,22 @@ public class BallInput : MonoBehaviour {
     RaycastHit hit;
     if (!Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
     {
-      transform.position = player.transform.position;
+      GameController.Instance.PlayerMovementTurn();
+      GameController.Instance.PlayerDead();
+      lastPosition.y = -100;
+      transform.position = lastPosition;
+      StartCoroutine(CallEndOfGame());
+    }
+    else
+    {
+      transform.position = lastPosition;
     }
     GetComponent<BallMovement>().StopMovement();
+  }
+
+  private IEnumerator CallEndOfGame()
+  {
+    yield return new WaitForSeconds(2f);
+    GameController.Instance.EndGame();
   }
 }
