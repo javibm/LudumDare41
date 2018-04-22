@@ -5,82 +5,109 @@ using System;
 
 public class GameController : Singleton<GameController>
 {
-    public static event Action OnStartGame = delegate { };
-    public static event Action OnBallReady = delegate { };
-    public static event Action OnPlayerRunning = delegate { };
-    public static event Action OnPlayerStop = delegate { };
-    public static event Action OnPlayerMovementTurn = delegate { };
-    public static event Action OnMinigolfTurn = delegate { };
-    public static event Action OnEndGame = delegate { };
-    public static event Action OnBallShot = delegate { };
-    public static event Action OnResetBallPosition = delegate { };
-    public static event Action OnPlayerDead = delegate { };
+  public static event Action OnStartGame = delegate { };
+  public static event Action OnBallReady = delegate { };
+  public static event Action OnPlayerRunning = delegate { };
+  public static event Action OnPlayerStop = delegate { };
+  public static event Action OnPlayerMovementTurn = delegate { };
+  public static event Action OnMinigolfTurn = delegate { };
+  public static event Action OnEndGame = delegate { };
+  public static event Action OnBallShot = delegate { };
+  public static event Action OnResetBallPosition = delegate { };
+  public static event Action OnPlayerDead = delegate { };
 
-    protected new void Awake()
-    {
-        base.Awake();
-    }
+  // Sounds events
 
-    void Start()
-    {
-        StartGame();
-    }
+  public static event Action OnCharacterLava = delegate { };
+  public static event Action OnBallLava = delegate { };
+  public static event Action OnBallFall = delegate { };
+  public static event Action OnBallHit = delegate { };
 
-    public void StartGame()
-    {
-        _mapGenerator.Init(_gameSettings.Levels[0], _gameSettings.DestructionTime);
-        OnStartGame();
-    }
+  protected new void Awake()
+  {
+    base.Awake();
+  }
 
-    public void PlayerMovementTurn()
-    {
-        OnPlayerMovementTurn();
-    }
+  void Start()
+  {
+    StartGame();
+  }
 
-    public void BallReady(Transform ballPosition)
-    {
-        _mapGenerator.InstantiateBall(ballPosition.position);
-        OnBallReady();
-    }
+  public void StartGame()
+  {
+    _mapGenerator.Init(_gameSettings.Levels[0], _gameSettings.DestructionTime);
+    OnStartGame();
+  }
 
-    public void PlayerRun()
-    {
-        OnPlayerRunning();
-    }
+  public void PlayerMovementTurn()
+  {
+    OnPlayerMovementTurn();
+  }
 
-    public void PlayerStop()
-    {
-        OnPlayerStop();
-    }
+  public void BallReady(Transform ballPosition)
+  {
+    _mapGenerator.InstantiateBall(ballPosition.position);
+    OnBallReady();
+  }
 
-    public void MinigolfTurn()
-    {
-        OnMinigolfTurn();
-    }
+  public void PlayerRun()
+  {
+    OnPlayerRunning();
+  }
 
-    public void BallShot()
-    {
-        OnBallShot();
-    }
+  public void PlayerStop()
+  {
+    OnPlayerStop();
+  }
 
-    public void ResetBallPosition()
-    {
-        OnResetBallPosition();
-    }
+  public void MinigolfTurn()
+  {
+    OnMinigolfTurn();
+  }
 
-    public void EndGame()
-    {
-        OnEndGame();
-    }
+  public void BallShot()
+  {
+    OnBallShot();
+  }
 
-    public void PlayerDead()
-    {
-      OnPlayerDead();
-    }
+  public void ResetBallPosition()
+  {
+    OnResetBallPosition();
+  }
 
-    [SerializeField]
-    private MapGenerator _mapGenerator;
+  public void EndGame()
+  {
+    OnEndGame();
+  }
 
-    [SerializeField]
-    private GameSettings _gameSettings;
+  public void PlayerDead()
+  {
+    OnPlayerDead();
+  }
+
+  public void CharacterLava()
+  {
+    OnCharacterLava();
+  }
+
+  public void BallLava()
+  {
+    OnBallLava();
+  }
+
+  public void BallFall()
+  {
+    OnBallFall();
+  }
+
+  public void BallHit()
+  {
+    OnBallHit();
+  }
+
+  [SerializeField]
+  private MapGenerator _mapGenerator;
+
+  [SerializeField]
+  private GameSettings _gameSettings;
 }

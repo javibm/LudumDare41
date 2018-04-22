@@ -17,6 +17,7 @@ public class BallInput : MonoBehaviour {
 
   bool preparedToPlayGolf;
   bool mouseDown;
+  bool fallSoundTriggered = false;
 
   Vector3 finalDirection;
 
@@ -72,10 +73,16 @@ public class BallInput : MonoBehaviour {
 
     if (transform.position.y < -5)
     {
+      fallSoundTriggered = false;
       GameController.Instance.ResetBallPosition();
     }
     else if (transform.position.y < -1.5)
     {
+      if (!fallSoundTriggered)
+      {
+        fallSoundTriggered = true;
+        GameController.Instance.BallFall();
+      }
       CameraController.Instance.FollowBall();
     }
   }

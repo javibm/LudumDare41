@@ -6,6 +6,11 @@ public class BallMovement : MonoBehaviour {
 
   private Rigidbody ballRigidbody;
 
+  private void OnCollisionEnter(Collision collision)
+  {
+    GameController.Instance.BallHit();
+  }
+
   private void Awake()
   {
     ballRigidbody = GetComponent<Rigidbody>();
