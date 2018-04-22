@@ -13,15 +13,14 @@ public class MapGenerator : MonoBehaviour
 
 	void Start ()
 	{
-		Init();
+		
 	}
 
-	public void Init()
+	public void Init(int goalRow, int goalCol)
 	{
 		string mapText = LoadMap();
-		_goalRow = 14;
-		_goalCol = 14;
-		
+		_goalRow = goalRow;
+		_goalCol = goalRow;
 		GenerateMap(mapText);
     _currentDestructionRadius = CalculateMaxDestructionRadius();		
 	}
@@ -174,7 +173,7 @@ public class MapGenerator : MonoBehaviour
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{
 			DestroyMap();
-			Init();
+			Init(_goalRow, _goalCol);
     }
 
 		if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
