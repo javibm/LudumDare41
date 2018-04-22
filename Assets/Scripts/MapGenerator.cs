@@ -7,6 +7,7 @@ using UnityEngine;
 public class MapGenerator : MonoBehaviour 
 {
 	public static event Action OnPlayerSpawned = delegate {};
+	public static event Action OnBallSpawned = delegate {};
 
 	void Awake () 
 	{
@@ -29,11 +30,16 @@ public class MapGenerator : MonoBehaviour
 		StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
 	}
 
+	public void InstantiateBall (Vector3 ballPosition)
+	{
+		Instantiate(_ballPrefab, ballPosition, Quaternion.identity);
+		OnBallSpawned();
+	}
+
 	private void InstantiatePlayerAndBall (int startRow, int startCol)
 	{
 		MapTile mt = GetMapTile(startRow, startCol);
 		Instantiate(_playerPrefab, mt.transform.position, Quaternion.identity);
-		Instantiate(_ballPrefab, mt.transform.position, Quaternion.identity);
 		OnPlayerSpawned();
 	}
 

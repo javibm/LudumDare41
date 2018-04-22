@@ -403,9 +403,9 @@ GameObject:
   - component: {fileID: 23241847917930336}
   - component: {fileID: 114629288085555476}
   - component: {fileID: 95255059479180652}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ball
-  m_TagString: Ball
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,6 +467,21 @@ GameObject:
   - component: {fileID: 4035818547666770}
   m_Layer: 0
   m_Name: Bone019
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1692664745954522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4308390524777844}
+  m_Layer: 8
+  m_Name: BallTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,6 +757,19 @@ Transform:
   m_Father: {fileID: 4430502624686062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4308390524777844
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692664745954522}
+  m_LocalRotation: {x: -0.086824045, y: -0.85286856, z: -0.4924039, w: 0.15038365}
+  m_LocalPosition: {x: 0, y: 0.036, z: -0.799}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 4608496429665574}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 300, y: 200, z: 0}
 --- !u!4 &4325349944534114
 Transform:
   m_ObjectHideFlags: 1
@@ -887,6 +915,7 @@ Transform:
   m_Children:
   - {fileID: 4833479469529846}
   - {fileID: 4259082585196382}
+  - {fileID: 4308390524777844}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1237,6 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   speedRotation: 16
+  ballTransform: {fileID: 4308390524777844}
 --- !u!114 &114629288085555476
 MonoBehaviour:
   m_ObjectHideFlags: 1

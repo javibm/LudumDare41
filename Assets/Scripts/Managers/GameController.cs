@@ -36,8 +36,9 @@ public class GameController : Singleton<GameController>
         OnPlayerMovementTurn();
     }
 
-    public void BallReady()
+    public void BallReady(Transform ballPosition)
     {
+        _mapGenerator.InstantiateBall(ballPosition.position);
         OnBallReady();
     }
 
