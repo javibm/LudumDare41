@@ -195,7 +195,7 @@ public class MapGenerator : MonoBehaviour
 		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
 		MapTile mt;
 		if (x == _levelSettings.GoalRow && z == _levelSettings.GoalCol ||
-			  x == _levelSettings.StartCol && z == _levelSettings.StartCol)
+			  x == _levelSettings.StartRow && z == _levelSettings.StartCol)
 		{
 			mt = Instantiate(_tilePrefabs[prefabIndex].GetVariant(0), position, Quaternion.Euler(rotation));
 		} 
