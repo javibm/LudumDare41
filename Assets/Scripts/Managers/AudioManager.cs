@@ -104,11 +104,14 @@ public class AudioManager : MonoBehaviour
         PlaySound(AudioType.Parir);
     }
 
-    // private void PlayDoor()
-    // {
-    //     PlaySound(AudioType.Door);
-    // }
-
+    void OnDestroy()
+    {
+        GameController.OnBallShot -= PlayWhispSound;
+        GameController.OnEndGame -= PlayDeath00;
+        GameController.OnStartGame -= PlayParirTime;
+        GameController.OnPlayerRunning -= PlayRunning;
+        GameController.OnPlayerStop -= StopRunning;
+    }
 
     [SerializeField]
     private AudioStruct[] _audios;
