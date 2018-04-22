@@ -18,6 +18,7 @@ public class AnimationController : MonoBehaviour
         GameController.OnPlayerRunning += GoToRun;
         GameController.OnPlayerStop += GoToIdle;
         GameController.OnPlayerDead += GoToRun;
+        GameController.OnPlayerWin += GoToWin;
     }
 
     void GoToRun()
@@ -43,6 +44,11 @@ public class AnimationController : MonoBehaviour
         animator.SetBool(hitBallBool, true);
     }
 
+    void GoToWin()
+    {
+        animator.Play(goToWinState);
+    }
+
     void OnDestroy()
     {
         GameController.OnPlayerMovementTurn -= GoToRun;
@@ -50,6 +56,8 @@ public class AnimationController : MonoBehaviour
         GameController.OnBallShot -= GoToHit;
         GameController.OnPlayerRunning -= GoToRun;
         GameController.OnPlayerStop -= GoToIdle;
+        GameController.OnPlayerDead -= GoToRun;
+        GameController.OnPlayerWin -= GoToWin;
     }
 
 
@@ -58,5 +66,6 @@ public class AnimationController : MonoBehaviour
     private int hitBallBool = Animator.StringToHash("HitBall");
     private int runningBool = Animator.StringToHash("Running");
     private int randomIdleFloat = Animator.StringToHash("RandomIdle");
+    private int goToWinState = Animator.StringToHash("Win");
 
 }
