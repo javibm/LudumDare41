@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCharge: 10
   maxCharge: 1000
-  chargeRate: 10
+  chargeRate: 50
   chargeShotUi: {fileID: 0}
   arrowSprite: {fileID: 114986553079885368}
 --- !u!114 &114536700356887016
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 00bad3c785f758442b7534225481c4f3, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -407,6 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d8d591ec011394e90d1eeaa2e98b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minScale: 1
+  maxScale: 2.5
+  arrow: {fileID: 114602326231974566}
 --- !u!114 &114987039494561100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -489,7 +492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.14399996, y: -0.000000007450581}
+  m_AnchoredPosition: {x: 0.1734, y: -0.000000007450581}
   m_SizeDelta: {x: 0.8359, y: 0.4146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224847488376676806
@@ -505,8 +508,8 @@ RectTransform:
   m_Father: {fileID: 224063409606119958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.41795, y: 0}
+  m_SizeDelta: {x: 0.83589995, y: 0.4146}
   m_Pivot: {x: 0.5, y: 0.5}
