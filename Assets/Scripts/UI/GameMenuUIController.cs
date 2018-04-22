@@ -9,6 +9,7 @@ public class GameMenuUIController : MonoBehaviour
   void Awake()
   {
     retryButton.onClick.AddListener(OnRetryButtonClick);
+    nextButton.onClick.AddListener(OnRetryButtonClick);
     menuButton.onClick.AddListener(OnMenuButtonClick);
     GameOverPanel.SetActive(false);
   }
@@ -36,7 +37,8 @@ public class GameMenuUIController : MonoBehaviour
     GameOverPanel.SetActive(true);
     winText.SetActive(false);
     loseText.SetActive(true);
-    newGame.sprite = replay;
+    retryButton.gameObject.SetActive(true);
+    nextButton.gameObject.SetActive(false);
   }
 
   private void ShowWin()
@@ -44,7 +46,8 @@ public class GameMenuUIController : MonoBehaviour
     GameOverPanel.SetActive(true);
     winText.SetActive(true);
     loseText.SetActive(false);
-    newGame.sprite = next;
+    retryButton.gameObject.SetActive(false);
+    nextButton.gameObject.SetActive(true);
   }
 
   private void ReloadScene()
@@ -55,6 +58,7 @@ public class GameMenuUIController : MonoBehaviour
   void OnDestroy()
   {
     retryButton.onClick.RemoveListener(OnRetryButtonClick);
+    nextButton.onClick.RemoveListener(OnRetryButtonClick);
     menuButton.onClick.RemoveListener(OnMenuButtonClick);
     GameController.OnEndGame -= ShowGameOver;
     GameController.OnPlayerWin -= ShowWin;
@@ -67,15 +71,9 @@ public class GameMenuUIController : MonoBehaviour
   [SerializeField]
   private Button retryButton;
   [SerializeField]
+  private Button nextButton;
+  [SerializeField]
   private Button menuButton;
-
-  [Space]
-  [SerializeField]
-  private Image newGame;
-  [SerializeField]
-  private Sprite next;
-  [SerializeField]
-  private Sprite replay;
 
 
   [SerializeField]
