@@ -59,6 +59,7 @@ MonoBehaviour:
   _tilePrefabs:
   - variants:
     - {fileID: 114580362795474646, guid: a0becda9b7ba4f040adfd4fd747a65d6, type: 2}
+    - {fileID: 114484088199224000, guid: 99ceb7c6453a9564a8e8b0b039f279e3, type: 2}
     randomRotation: 0
   - variants:
     - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
@@ -66,6 +67,13 @@ MonoBehaviour:
     - {fileID: 114639854961424742, guid: e845b8a64aa0a7c47ad72fbe49ca0645, type: 2}
     - {fileID: 114932725212535050, guid: a1cdf2351e0435d4eaa47af4d7a90c9d, type: 2}
     - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114085060222648934, guid: f472170aa4994e44982e273dccc22e8c, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114085060222648934, guid: e617041d78e10164299439634883d35d, type: 2}
+    - {fileID: 114856440767954722, guid: 40896054fdedda346a1ea65d05422cc2, type: 2}
     randomRotation: 1
   - variants:
     - {fileID: 114537248978287300, guid: 7c7d0c03809bd234589b495e98f2c9e5, type: 2}
