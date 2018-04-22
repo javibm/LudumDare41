@@ -1,90 +1,120 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraController : MonoBehaviour
+public class CameraController : Singleton<CameraController>
 {
-    void Start()
+  void Start()
+  {
+    GameController.OnPlayerMovementTurn += ZoomIn;
+    GameController.OnMinigolfTurn += ZoomOut;
+    GameController.OnResetBallPosition += ResetPosition;
+
+    camera = GetComponent<Camera>();
+    player = GameObject.FindGameObjectWithTag("Player");
+    ball = GameObject.FindGameObjectWithTag("Ball");
+
+    cameraTarget = player;
+    
+
+    camera.orthographicSize = minZoom;
+
+    zoomOffset = normalZoom - minZoom;
+  }
+
+  void Update()
+  {
+    finalPosition = cameraTarget.transform.position + new Vector3(6.0f, 6.0f, 6.0f);
+    transform.position = finalPosition;
+  }
+
+  void ResetPosition()
+  {
+    FollowCharacter();
+    ZoomOut();
+  }
+
+  public void FollowCharacter()
+  {
+    Time.timeScale = 1f;
+    cameraTarget = player;
+  }
+
+  public void FollowBall()
+  {
+    cameraTarget = ball;
+    ZoomIn();
+    Time.timeScale = 0.5f;
+  }
+
+  private void ZoomIn()
+  {
+    StopAllCoroutines();
+    if (camera.orthographicSize != minZoom)
     {
-        GameController.OnPlayerMovementTurn += ZoomIn;
-        GameController.OnMinigolfTurn += ZoomOut;
-
-        camera = GetComponent<Camera>();
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        camera.orthographicSize = minZoom;
-
-        zoomOffset = normalZoom - minZoom;
+      StartCoroutine(ZoomInCamera(zoomOffset));
     }
+  }
 
-    void Update()
+  private void ZoomOut()
+  {
+    StopAllCoroutines();
+    if (camera.orthographicSize != normalZoom)
     {
-        transform.position = player.transform.position + new Vector3(6.0f, 6.0f, 6.0f);
+      StartCoroutine(ZoomOutCamera(zoomOffset));
     }
+  }
 
-    private void ZoomIn()
+  private IEnumerator ZoomInCamera(float zoom)
+  {
+    float time = 0.0f;
+    float cameraZoom = camera.orthographicSize;
+
+    while (time < timeTransition)
     {
-        StopAllCoroutines();
-        if (camera.orthographicSize != minZoom)
-        {
-            StartCoroutine(ZoomInCamera(zoomOffset));
-        }
+      camera.orthographicSize = cameraZoom - zoom * zoomCurve.Evaluate(time / timeTransition);
+      time += Time.deltaTime;
+      yield return null;
     }
+    camera.orthographicSize = minZoom;
+  }
 
-    private void ZoomOut()
+  private IEnumerator ZoomOutCamera(float zoom)
+  {
+    float time = 0.0f;
+    float cameraZoom = camera.orthographicSize;
+
+    while (time < timeTransition)
     {
-        StopAllCoroutines();
-        if (camera.orthographicSize != normalZoom)
-        {
-            StartCoroutine(ZoomOutCamera(zoomOffset));
-        }
+      camera.orthographicSize = cameraZoom + zoom * zoomCurve.Evaluate(time / timeTransition);
+      time += Time.deltaTime;
+      yield return null;
     }
+    camera.orthographicSize = normalZoom;
+  }
 
-    private IEnumerator ZoomInCamera(float zoom)
-    {
-        float time = 0.0f;
-        float cameraZoom = camera.orthographicSize;
+  void OnDestroy()
+  {
+    GameController.OnPlayerMovementTurn -= ZoomIn;
+    GameController.OnMinigolfTurn -= ZoomOut;
+  }
 
-        while (time < timeTransition)
-        {
-            camera.orthographicSize = cameraZoom - zoom * zoomCurve.Evaluate(time / timeTransition);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        camera.orthographicSize = minZoom;
-    }
+  [SerializeField]
+  private AnimationCurve zoomCurve;
+  [SerializeField]
+  private float minZoom;
+  [SerializeField]
+  private float normalZoom;
+  [SerializeField]
+  private float timeTransition;
 
-    private IEnumerator ZoomOutCamera(float zoom)
-    {
-        float time = 0.0f;
-        float cameraZoom = camera.orthographicSize;
+  private GameObject player;
+  private GameObject ball;
+  private GameObject cameraTarget;
 
-        while (time < timeTransition)
-        {
-            camera.orthographicSize = cameraZoom + zoom * zoomCurve.Evaluate(time / timeTransition);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        camera.orthographicSize = normalZoom;
-    }
+  private Vector3 finalPosition;
 
-    void OnDestroy()
-    {
-        GameController.OnPlayerMovementTurn -= ZoomIn;
-        GameController.OnMinigolfTurn -= ZoomOut;
-    }
+  private new Camera camera;
 
-    [SerializeField]
-    private AnimationCurve zoomCurve;
-    [SerializeField]
-    private float minZoom;
-    [SerializeField]
-    private float normalZoom;
-    [SerializeField]
-    private float timeTransition;
+  private float zoomOffset;
 
-    private GameObject player;
-
-    private new Camera camera;
-
-    private float zoomOffset;
 }

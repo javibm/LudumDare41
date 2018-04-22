@@ -52,7 +52,8 @@ public class BallInput : MonoBehaviour {
   }
 
   // Update is called once per frame
-  void Update () {
+  void Update()
+  {
     if (!mouseDown && preparedToPlayGolf && Input.GetMouseButtonDown(0))
     {
       arrowSprite.EnableArrow(true);
@@ -72,11 +73,15 @@ public class BallInput : MonoBehaviour {
       }
     }
 
-    if (transform.position.y < -1.5)
+    if (transform.position.y < -5)
     {
       GameController.Instance.ResetBallPosition();
     }
-	}
+    else if (transform.position.y < -1.5)
+    {
+      CameraController.Instance.FollowBall();
+    }
+  }
 
   private void mousePress()
   {
