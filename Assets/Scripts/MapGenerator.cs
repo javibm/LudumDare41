@@ -50,9 +50,11 @@ public class MapGenerator : MonoBehaviour
 
 	private IEnumerator DestroyWorldCorroutine (float destructionTime)
 	{
+
 		while (true)
 		{
 			yield return new WaitForSeconds(destructionTime);
+      ChangeSkybox();
 			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
 		}
 	}
@@ -123,9 +125,9 @@ public class MapGenerator : MonoBehaviour
 
 	private IEnumerator DestroyMapCorroutine ()
 	{
-		while (true)
+    while (true)
 		{
-			MapTile mt = GetMapTile(UnityEngine.Random.Range(0, _mapRows), UnityEngine.Random.Range(0, _mapCols));
+      MapTile mt = GetMapTile(UnityEngine.Random.Range(0, _mapRows), UnityEngine.Random.Range(0, _mapCols));
 			if(mt != null)
 			{
 				mt.Deactivate();
@@ -227,7 +229,12 @@ public class MapGenerator : MonoBehaviour
 		mt.transform.SetParent(transform);
 	}
 
-	void OnGUI ()
+  private void ChangeSkybox()
+  {
+    RenderSettings.skybox.SetColor("Color 2", _skyboxDoomColor);
+  }
+
+  void OnGUI ()
 	{
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{
@@ -283,6 +290,12 @@ public class MapGenerator : MonoBehaviour
 
 	[SerializeField]
 	private List<Color> _tileColors;
+
+  [SerializeField]
+  private Material _skyboxMaterial;
+
+  [SerializeField]
+  private Color _skyboxDoomColor;
 
 	private List<MapTile> _mapTiles;
 	private int _mapCols;
