@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3915a44b797ed42ae3e07212360ae2, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  _destructionTime: 1000
+  _destructionTime: 4
   _levels:
-  - StartRow: 20
+  - StartRow: 19
     StartCol: 9
     GoalRow: 14
     GoalCol: 10

@@ -4,92 +4,94 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  void Awake()
-  {
-    shouldMove = false;
-    Invoke("StartMovement", 1.8f);
-  }
-  void Start()
-  {
-    GameController.OnMinigolfTurn += StopMovement;
-    GameController.OnPlayerMovementTurn += ResumeMovement;
-    GameController.OnPlayerDead += StopMovement;
-  }
-
-  void OnDestroy()
-  {
-    GameController.OnMinigolfTurn -= StopMovement;
-    GameController.OnPlayerMovementTurn -= ResumeMovement;
-    GameController.OnPlayerDead -= StopMovement;
-  }
-
-  void Update()
-  {
-    if (shouldMove)
+    void Awake()
     {
-      if (Input.GetMouseButton(0))
-      {
-        GameController.Instance.PlayerRun();
-        transform.position += Time.deltaTime * speed * transform.forward;
-      }
-      else
-      {
-        GameController.Instance.PlayerStop();
-      }
+        shouldMove = false;
+        Invoke("StartMovement", 1.8f);
+    }
+    void Start()
+    {
+        GameController.OnMinigolfTurn += StopMovement;
+        GameController.OnPlayerMovementTurn += ResumeMovement;
+        GameController.OnPlayerDead += StopMovement;
+        GameController.OnPlayerWin += StopMovement;
     }
 
-    if (shouldMove && transform.position.y < -1)
+    void OnDestroy()
     {
-      GameController.Instance.PlayerDead();
+        GameController.OnMinigolfTurn -= StopMovement;
+        GameController.OnPlayerMovementTurn -= ResumeMovement;
+        GameController.OnPlayerDead -= StopMovement;
+        GameController.OnPlayerWin -= StopMovement;
     }
-  }
 
-  void FixedUpdate()
-  {
-    if (shouldMove)
+    void Update()
     {
-      Plane playerPlane = new Plane(Vector3.up, transform.position);
+        if (shouldMove)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                GameController.Instance.PlayerRun();
+                transform.position += Time.deltaTime * speed * transform.forward;
+            }
+            else
+            {
+                GameController.Instance.PlayerStop();
+            }
+        }
 
-      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-      float hitdist = 0.0f;
-
-      if (playerPlane.Raycast(ray, out hitdist))
-      {
-        Vector3 targetPoint = ray.GetPoint(hitdist);
-
-        Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
-      }
-
+        if (shouldMove && transform.position.y < -1)
+        {
+            GameController.Instance.PlayerDead();
+        }
     }
-  }
 
-  public void StopMovement()
-  {
-    shouldMove = false;
-  }
+    void FixedUpdate()
+    {
+        if (shouldMove)
+        {
+            Plane playerPlane = new Plane(Vector3.up, transform.position);
 
-  public void ResumeMovement()
-  {
-    shouldMove = true;
-  }
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-  public void StartMovement()
-  {
-    shouldMove = true;
-    GameController.Instance.BallReady(ballTransform);
-  }
+            float hitdist = 0.0f;
 
-  private bool shouldMove;
+            if (playerPlane.Raycast(ray, out hitdist))
+            {
+                Vector3 targetPoint = ray.GetPoint(hitdist);
 
-  [SerializeField]
-  private float speed;
+                Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
-  [SerializeField]
-  private float speedRotation;
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
+            }
 
-  [SerializeField]
-  private Transform ballTransform;
+        }
+    }
+
+    public void StopMovement()
+    {
+        shouldMove = false;
+    }
+
+    public void ResumeMovement()
+    {
+        shouldMove = true;
+    }
+
+    public void StartMovement()
+    {
+        shouldMove = true;
+        GameController.Instance.BallReady(ballTransform);
+    }
+
+    private bool shouldMove;
+
+    [SerializeField]
+    private float speed;
+
+    [SerializeField]
+    private float speedRotation;
+
+    [SerializeField]
+    private Transform ballTransform;
 }

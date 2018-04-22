@@ -22,6 +22,7 @@ public class GameController : Singleton<GameController>
   public static event Action OnBallLava = delegate { };
   public static event Action OnBallFall = delegate { };
   public static event Action OnBallHit = delegate { };
+  public static event Action OnPlayerWin = delegate { };
 
   protected new void Awake()
   {
@@ -103,6 +104,11 @@ public class GameController : Singleton<GameController>
   public void BallHit()
   {
     OnBallHit();
+  }
+
+  public void PlayerWin()
+  {
+    OnPlayerWin();
   }
 
   [SerializeField]

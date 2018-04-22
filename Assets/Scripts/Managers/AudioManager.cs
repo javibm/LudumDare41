@@ -23,7 +23,8 @@ public class AudioManager : MonoBehaviour
         Death_00,
         Step00,
         LavaBall,
-        LavaDino
+        LavaDino,
+        Fanfare
     }
 
     void Start()
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
         GameController.OnStartGame += PlayParirTime;
         GameController.OnPlayerRunning += PlayRunning;
         GameController.OnPlayerStop += StopRunning;
+        GameController.OnPlayerWin += PlayFanfare;
     }
 
     private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f)
@@ -110,6 +112,10 @@ public class AudioManager : MonoBehaviour
     {
         PlaySound(AudioType.LavaBall);
     }
+    private void PlayFanfare()
+    {
+        PlaySound(AudioType.Fanfare);
+    }
 
     void OnDestroy()
     {
@@ -118,6 +124,7 @@ public class AudioManager : MonoBehaviour
         GameController.OnStartGame -= PlayParirTime;
         GameController.OnPlayerRunning -= PlayRunning;
         GameController.OnPlayerStop -= StopRunning;
+        GameController.OnPlayerWin -= PlayFanfare;
     }
 
     [SerializeField]
