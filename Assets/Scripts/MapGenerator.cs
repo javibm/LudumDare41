@@ -195,6 +195,25 @@ public class MapGenerator : MonoBehaviour
 		Vector3 position = new Vector3(x, _tileHeights[yIndex], z);
 		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
 		MapTile mt = Instantiate(_tilePrefabs[prefabIndex].GetRandomVariant(), position, Quaternion.Euler(rotation));
+		Renderer r = mt.GetComponentInChildren<Renderer>();
+		switch(prefabIndex)
+		{
+			case 0:	// Empty
+				r.material.color = _tileColors[0];
+				break;
+			case 1:	// Floor
+				r.material.color = _tileColors[yIndex];
+				break;
+			case 2:	// Wall
+				r.material.color = _tileColors[UnityEngine.Random.Range(0, 4)];
+				break;
+			case 3:	// Slope
+			case 4:	// Slope plus
+				r.material.color = _tileColors[1];
+				break;
+			default:
+				break;
+		}
 		_mapTiles.Add(mt);
 		mt.transform.SetParent(transform);
 	}
@@ -248,6 +267,9 @@ public class MapGenerator : MonoBehaviour
 
 	[SerializeField]
 	private GameObject _goalPrefab;
+
+	[SerializeField]
+	private List<Color> _tileColors;
 
 	private List<MapTile> _mapTiles;
 	private int _mapCols;
