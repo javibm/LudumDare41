@@ -44,6 +44,14 @@ public class GameMenuUIController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    void OnDestroy()
+    {
+        retryButton.onClick.RemoveListener(OnRetryButtonClick);
+        tweetButton.onClick.RemoveListener(OnTweetButtonClick);
+        menuButton.onClick.RemoveListener(OnMenuButtonClick);
+        GameController.OnEndGame -= ShowGameOver;
+    }
+
     [SerializeField]
     private Button retryButton;
     [SerializeField]
