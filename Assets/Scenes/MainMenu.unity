@@ -540,6 +540,47 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf12ef9e1fab07345a9fa1122eaf1a80, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &962214026 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1728974786850692, guid: 7d36aa41f9af940ed9e7149b4511f331,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687313717}
+--- !u!114 &962214029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962214026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8720eb0534025694d9b32f557dd6f362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  disableOnFinished: 1
+  tweenerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  tweenerType: 0
+  startDelay: 0
+  duration: 0.3
+  initialPosition: {x: 416, y: -360, z: 0}
+  finalPosition: {x: 1500, y: 0, z: 0}
 --- !u!1 &1463472337
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +853,26 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114314035197063382, guid: 7d36aa41f9af940ed9e7149b4511f331,
+        type: 2}
+      propertyPath: creditsTweener
+      value: 
+      objectReference: {fileID: 1687313725}
+    - target: {fileID: 114314035197063382, guid: 7d36aa41f9af940ed9e7149b4511f331,
+        type: 2}
+      propertyPath: logoTweener
+      value: 
+      objectReference: {fileID: 1687313723}
+    - target: {fileID: 114314035197063382, guid: 7d36aa41f9af940ed9e7149b4511f331,
+        type: 2}
+      propertyPath: playTweener
+      value: 
+      objectReference: {fileID: 1687313721}
+    - target: {fileID: 114314035197063382, guid: 7d36aa41f9af940ed9e7149b4511f331,
+        type: 2}
+      propertyPath: creditsObjectTweener
+      value: 
+      objectReference: {fileID: 962214029}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d36aa41f9af940ed9e7149b4511f331, type: 2}
   m_IsPrefabParent: 0
@@ -900,6 +961,147 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1687313720 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1667567842837618, guid: 7d36aa41f9af940ed9e7149b4511f331,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687313717}
+--- !u!114 &1687313721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687313720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8720eb0534025694d9b32f557dd6f362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  disableOnFinished: 1
+  tweenerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.0028686523
+      value: 0
+      inSlope: 4.503653
+      outSlope: 4.503653
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.7185844
+      value: 1.0972474
+      inSlope: -0.93757886
+      outSlope: -0.93757886
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9989624
+      value: 1
+      inSlope: -0.029494401
+      outSlope: -0.029494401
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  tweenerType: 0
+  startDelay: 0
+  duration: 0.3
+  initialPosition: {x: -518, y: -404, z: 0}
+  finalPosition: {x: -1500, y: -404, z: 0}
+--- !u!1 &1687313722 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1093779711595066, guid: 7d36aa41f9af940ed9e7149b4511f331,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687313717}
+--- !u!114 &1687313723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687313722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8720eb0534025694d9b32f557dd6f362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  disableOnFinished: 1
+  tweenerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.0028686523
+      value: 0
+      inSlope: 4.503653
+      outSlope: 4.503653
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.7185844
+      value: 1.0972474
+      inSlope: -0.93757886
+      outSlope: -0.93757886
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9989624
+      value: 1
+      inSlope: -0.029494401
+      outSlope: -0.029494401
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  tweenerType: 0
+  startDelay: 0
+  duration: 0.3
+  initialPosition: {x: -507, y: -191, z: 0}
+  finalPosition: {x: -1500, y: -191, z: 0}
+--- !u!1 &1687313724 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1620838343495378, guid: 7d36aa41f9af940ed9e7149b4511f331,
+    type: 2}
+  m_PrefabInternal: {fileID: 1687313717}
+--- !u!114 &1687313725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687313724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8720eb0534025694d9b32f557dd6f362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 0
+  disableOnFinished: 1
+  tweenerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.0028686523
+      value: 0
+      inSlope: 4.503653
+      outSlope: 4.503653
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.7185844
+      value: 1.0972474
+      inSlope: -0.93757886
+      outSlope: -0.93757886
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9989624
+      value: 1
+      inSlope: -0.029494401
+      outSlope: -0.029494401
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  tweenerType: 0
+  startDelay: 0
+  duration: 0.3
+  initialPosition: {x: -518, y: 200, z: 0}
+  finalPosition: {x: -1500, y: 200, z: 0}
 --- !u!1001 &1821808021
 Prefab:
   m_ObjectHideFlags: 0
