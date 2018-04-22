@@ -6,6 +6,7 @@ using System;
 public class GameController : Singleton<GameController>
 {
     public static event Action OnStartGame = delegate { };
+    public static event Action OnBallReady = delegate { };
     public static event Action OnPlayerRunning = delegate { };
     public static event Action OnPlayerStop = delegate { };
     public static event Action OnPlayerMovementTurn = delegate { };
@@ -33,6 +34,11 @@ public class GameController : Singleton<GameController>
     public void PlayerMovementTurn()
     {
         OnPlayerMovementTurn();
+    }
+
+    public void BallReady()
+    {
+        OnBallReady();
     }
 
     public void PlayerRun()
