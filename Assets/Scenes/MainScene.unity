@@ -284,6 +284,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxDoomColor.r
+      value: 0.6911765
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxDoomColor.g
+      value: 0.20328718
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxDoomColor.b
+      value: 0.33451268
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3411bf4d2a186ae4cb5b40f153c00c06, type: 2}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxNormalColor.r
+      value: 0.37289143
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxNormalColor.g
+      value: 0.7174346
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418807042573914, guid: 8e6fce8d01fe5d64d942e723a2ad9792,
+        type: 2}
+      propertyPath: _skyboxNormalColor.b
+      value: 0.8897059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e6fce8d01fe5d64d942e723a2ad9792, type: 2}
   m_IsPrefabParent: 0
@@ -307,7 +342,7 @@ GameObject:
   - component: {fileID: 782017044}
   m_Layer: 8
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

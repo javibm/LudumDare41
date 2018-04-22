@@ -14,11 +14,6 @@ public class MapGenerator : MonoBehaviour
 		_mapTiles = new List<MapTile>();
 	}
 
-	void Start ()
-	{
-
-	}
-
 	public void Init (GameSettings.LevelSettings level, float destructionTime)
 	{
 		string mapText = LoadMap();
@@ -27,7 +22,9 @@ public class MapGenerator : MonoBehaviour
 		GenerateMap(mapText);
 		InstantiatePlayerAndBall(_levelSettings.StartRow, _levelSettings.StartCol);
     _currentDestructionRadius = CalculateMaxDestructionRadius();
-		StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
+    RenderSettings.skybox.SetFloat("_DayFactor", 0);
+    DynamicGI.UpdateEnvironment();
+    StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
 	}
 
 	public void InstantiateBall (Vector3 ballPosition)
@@ -50,9 +47,11 @@ public class MapGenerator : MonoBehaviour
 
 	private IEnumerator DestroyWorldCorroutine (float destructionTime)
 	{
+
 		while (true)
 		{
 			yield return new WaitForSeconds(destructionTime);
+      ChangeSkybox();
 			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
 		}
 	}
@@ -123,9 +122,9 @@ public class MapGenerator : MonoBehaviour
 
 	private IEnumerator DestroyMapCorroutine ()
 	{
-		while (true)
+    while (true)
 		{
-			MapTile mt = GetMapTile(UnityEngine.Random.Range(0, _mapRows), UnityEngine.Random.Range(0, _mapCols));
+      MapTile mt = GetMapTile(UnityEngine.Random.Range(0, _mapRows), UnityEngine.Random.Range(0, _mapCols));
 			if(mt != null)
 			{
 				mt.Deactivate();
@@ -196,7 +195,7 @@ public class MapGenerator : MonoBehaviour
 		Vector3 rotation = new Vector3(0f, _tileRotations[rotIndex], 0f);
 		MapTile mt;
 		if (x == _levelSettings.GoalRow && z == _levelSettings.GoalCol ||
-			  x == _levelSettings.StartCol && z == _levelSettings.StartCol)
+			  x == _levelSettings.StartRow && z == _levelSettings.StartCol)
 		{
 			mt = Instantiate(_tilePrefabs[prefabIndex].GetVariant(0), position, Quaternion.Euler(rotation));
 		} 
@@ -227,7 +226,30 @@ public class MapGenerator : MonoBehaviour
 		mt.transform.SetParent(transform);
 	}
 
-	void OnGUI ()
+  private void ChangeSkybox()
+  {
+    if (RenderSettings.skybox.GetFloat("_DayFactor") != 1)
+    {
+      StartCoroutine(LerpSkybox());
+    }
+  }
+
+  private IEnumerator LerpSkybox()
+  {
+    float changeTime = 1;
+    float currentTime = 0;
+    while (currentTime < changeTime)
+    {
+      RenderSettings.skybox.SetFloat("_DayFactor", Mathf.Lerp(0, 1, currentTime /changeTime));
+      currentTime += Time.deltaTime;
+      DynamicGI.UpdateEnvironment();
+      yield return 0;
+    }
+    RenderSettings.skybox.SetFloat("_DayFactor", 1);
+    DynamicGI.UpdateEnvironment();
+  }
+
+  void OnGUI ()
 	{
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{

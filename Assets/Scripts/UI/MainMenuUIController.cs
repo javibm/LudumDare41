@@ -15,7 +15,13 @@ public class MainMenuUIController : MonoBehaviour
         howToPlayPanel.SetActive(false);
     }
 
-    private void OnHowToPlayButtonClick()
+  void Start()
+  {
+    RenderSettings.skybox.SetFloat("_DayFactor", 0);
+    DynamicGI.UpdateEnvironment();
+  }
+
+  private void OnHowToPlayButtonClick()
     {
         howToPlayPanel.SetActive(true);
     }
