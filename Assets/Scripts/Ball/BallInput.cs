@@ -137,23 +137,18 @@ public class BallInput : MonoBehaviour {
     {
       Gizmos.color = Color.red;
       Gizmos.DrawRay(transform.position, -finalDirection);
-      Gizmos.DrawRay(transform.position, Vector3.Normalize(player.transform.forward));
     }
+    Gizmos.DrawRay(transform.position, Vector3.down);
   }
 
   private void OnResetLastPosition()
   {
+    transform.position = lastPosition;
     RaycastHit hit;
-    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
-    {
-      transform.position = lastPosition;
-      Debug.Log("Did Hit", this);
-    }
-    else
+    if (!Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
     {
       transform.position = player.transform.position;
-      Debug.Log("Did not hit", this);
     }
-    transform.position = lastPosition;
+    GetComponent<BallMovement>().StopMovement();
   }
 }
