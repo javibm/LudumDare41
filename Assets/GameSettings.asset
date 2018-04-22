@@ -11,16 +11,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3915a44b797ed42ae3e07212360ae2, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  _destructionTime: 1000
   _levels:
-  - StartRow: 4
-    StartCol: 4
-    GoalRow: 10
-    GoalCol: 9
-  - StartRow: 20
-    StartCol: 22
-    GoalRow: 16
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 2
+    GoalCol: 16
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 2
+    GoalCol: 14
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 4
     GoalCol: 12
-  - StartRow: 5
-    StartCol: 5
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 3
+    GoalCol: 9
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 6
+    GoalCol: 30
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 1
+    GoalCol: 29
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 30
+    GoalCol: 30
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 21
+    GoalCol: 30
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 19
+    GoalCol: 23
+  - StartRow: 2
+    StartCol: 3
     GoalRow: 15
-    GoalCol: 5
+    GoalCol: 15
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 25
+    GoalCol: 13
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 28
+    GoalCol: 17
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 29
+    GoalCol: 2
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 24
+    GoalCol: 4
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 25
+    GoalCol: 6
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 20
+    GoalCol: 12
+  - StartRow: 2
+    StartCol: 3
+    GoalRow: 14
+    GoalCol: 10
