@@ -25,6 +25,10 @@ public class MainMenuUIController : MonoBehaviour
     private void OnHowToPlayButtonClick()
     {
         audioSource.Play();
+        creditsTweener.PlayTweener();
+        playTweener.PlayTweener();
+        logoTweener.PlayTweener();
+        creditsObjectTweener.PlayTweener();
         howToPlayPanel.SetActive(true);
     }
 
@@ -68,4 +72,13 @@ public class MainMenuUIController : MonoBehaviour
     [SerializeField]
     private List<Text> creditLabelsList;
     private AudioSource audioSource;
+
+    [SerializeField]
+    private Utils.UI.AnchoredPositionTweener creditsTweener;
+    [SerializeField]
+    private Utils.UI.AnchoredPositionTweener logoTweener;
+    [SerializeField]
+    private Utils.UI.AnchoredPositionTweener playTweener;
+    [SerializeField]
+    private Utils.UI.AnchoredPositionTweener creditsObjectTweener;
 }
