@@ -20,7 +20,10 @@ public class AudioManager : MonoBehaviour
         Whisp00,
         Whisp01,
         Parir,
-        Death_00
+        Death_00,
+        Step00,
+        Step01,
+        Step02
     }
 
     void Start()
@@ -35,12 +38,18 @@ public class AudioManager : MonoBehaviour
         GameController.OnBallShot += PlayWhispSound;
         GameController.OnEndGame += PlayDeath00;
         GameController.OnStartGame += PlayParirTime;
+        GameController.OnPlayerRunning += PlayRunning;
+        GameController.OnPlayerStop += StopRunning;
     }
 
-    private void PlaySound(AudioType audioType, bool loop = false)
+    private void PlaySound(AudioType audioType, bool loop = false, bool pitch = false)
     {
         if (!_audios[(int)audioType].audioClips[0].isPlaying)
         {
+            if (pitch)
+            {
+                _audios[(int)audioType].audioClips[0].pitch = Random.Range(_audios[(int)audioType].audioClips[0].pitch - 0.2f, _audios[(int)audioType].audioClips[0].pitch + 0.2f);
+            }
             _audios[(int)audioType].audioClips[0].loop = loop;
             _audios[(int)audioType].audioClips[0].Play();
         }
@@ -56,6 +65,28 @@ public class AudioManager : MonoBehaviour
         {
             Invoke("PlayWhisp01", 0.5f);
         }
+    }
+
+    private void PlayRunning()
+    {
+        float random = Random.Range(0.0f, 1.0f);
+        if (random < 0.3f)
+        {
+            PlaySound(AudioType.Step00, false, true);
+        }
+        else if (random > 0.3f && random < 0.6f)
+        {
+            PlaySound(AudioType.Step01, false, true);
+        }
+        else
+        {
+            PlaySound(AudioType.Step02, false, true);
+        }
+    }
+
+    private void StopRunning()
+    {
+
     }
 
     private void PlayDeath00()
