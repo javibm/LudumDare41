@@ -15,6 +15,7 @@ public class GameController : Singleton<GameController>
     public static event Action OnBallShot = delegate { };
     public static event Action OnResetBallPosition = delegate { };
     public static event Action OnPlayerDead = delegate { };
+    public static event Action OnPlayerWin = delegate { };
 
     protected new void Awake()
     {
@@ -75,7 +76,12 @@ public class GameController : Singleton<GameController>
 
     public void PlayerDead()
     {
-      OnPlayerDead();
+        OnPlayerDead();
+    }
+
+    public void PlayerWin()
+    {
+        OnPlayerWin();
     }
 
     [SerializeField]
