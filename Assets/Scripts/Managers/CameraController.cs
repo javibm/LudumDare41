@@ -17,7 +17,14 @@ public class CameraController : Singleton<CameraController>
     zoomOffset = normalZoom - minZoom;
   }
 
-  private void LookForPlayerAndBall()
+  void OnDestroy()
+  {
+    GameController.OnPlayerMovementTurn -= ZoomIn;
+    GameController.OnMinigolfTurn -= ZoomOut;
+    GameController.OnResetBallPosition -= ResetPosition;
+  }
+
+    private void LookForPlayerAndBall()
   {
     player = GameObject.FindGameObjectWithTag("Player");
     ball = GameObject.FindGameObjectWithTag("Ball");
@@ -44,7 +51,6 @@ public class CameraController : Singleton<CameraController>
   void ResetPosition()
   {
     FollowCharacter();
-    ZoomOut();
   }
 
   public void FollowCharacter()
@@ -55,9 +61,11 @@ public class CameraController : Singleton<CameraController>
 
   public void FollowBall()
   {
-    cameraTarget = ball;
-    ZoomIn();
-    Time.timeScale = 0.5f;
+    if (cameraTarget != ball)
+    {
+      cameraTarget = ball;
+      Time.timeScale = 0.5f;
+    }
   }
 
   private void ZoomIn()
@@ -76,6 +84,11 @@ public class CameraController : Singleton<CameraController>
     {
       StartCoroutine(ZoomOutCamera(zoomOffset));
     }
+  }
+
+  private void StopZoom()
+  {
+    StopAllCoroutines();
   }
 
   private IEnumerator ZoomInCamera(float zoom)
@@ -104,13 +117,6 @@ public class CameraController : Singleton<CameraController>
       yield return null;
     }
     camera.orthographicSize = normalZoom;
-  }
-
-  void OnDestroy()
-  {
-    GameController.OnPlayerMovementTurn -= ZoomIn;
-    GameController.OnMinigolfTurn -= ZoomOut;
-    MapGenerator.OnPlayerSpawned -= LookForPlayerAndBall;
   }
 
   [SerializeField]
