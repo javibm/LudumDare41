@@ -24,6 +24,7 @@ public class BallTriggerComponent : MonoBehaviour {
     GameController.OnBallReady += InitTrigger;
     GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
     GameController.OnPlayerMovementTurn += OnPlayerMovementTurnHandler;
+    GameController.OnPlayerWin += DeleteTrigger;
   }
 
   private void OnDisable()
@@ -31,6 +32,7 @@ public class BallTriggerComponent : MonoBehaviour {
     GameController.OnBallReady -= InitTrigger;
     GameController.OnMinigolfTurn -= OnMinigolfTurnHandler;
     GameController.OnPlayerMovementTurn -= OnPlayerMovementTurnHandler;
+    GameController.OnPlayerWin -= DeleteTrigger;
   }
 
   void OnTriggerEnter(Collider other)
@@ -49,5 +51,10 @@ public class BallTriggerComponent : MonoBehaviour {
   private void OnPlayerMovementTurnHandler()
   {
     trigger.enabled = true;
+  }
+
+  private void DeleteTrigger()
+  {
+    trigger.enabled = false;
   }
 }
