@@ -55,6 +55,7 @@ public class GameMenuUIController : MonoBehaviour
     retryButton.onClick.RemoveListener(OnRetryButtonClick);
     menuButton.onClick.RemoveListener(OnMenuButtonClick);
     GameController.OnEndGame -= ShowGameOver;
+    GameController.OnPlayerWin -= ShowWin;
   }
 
   [SerializeField]
