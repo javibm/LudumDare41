@@ -26,7 +26,8 @@ public class AudioManager : MonoBehaviour
         LavaDino,
         Fanfare,
         BallFall,
-        Button
+        Button,
+        Bounce
     }
 
     void Start()
@@ -42,6 +43,7 @@ public class AudioManager : MonoBehaviour
         GameController.OnBallLava += PlayBallLava;
         GameController.OnCharacterLava += PlayCharacterLava;
         GameController.OnButtonClicked += PlayButton;
+        GameController.OnBallHit += PlayBounce;
     }
 
     private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f)
@@ -136,6 +138,11 @@ public class AudioManager : MonoBehaviour
         PlaySound(AudioType.Button);
     }
 
+    private void PlayBounce()
+    {
+        PlaySound(AudioType.Bounce, false, 1.0f);
+    }
+
     void OnDestroy()
     {
         GameController.OnBallShot -= PlayWhispSound;
@@ -148,6 +155,7 @@ public class AudioManager : MonoBehaviour
         GameController.OnBallLava -= PlayBallLava;
         GameController.OnCharacterLava -= PlayCharacterLava;
         GameController.OnButtonClicked -= PlayButton;
+        GameController.OnBallHit -= PlayBounce;
     }
 
     [SerializeField]
