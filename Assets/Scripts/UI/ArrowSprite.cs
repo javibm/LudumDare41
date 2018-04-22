@@ -19,7 +19,7 @@ public class ArrowSprite : MonoBehaviour {
 
   private void OnDisable()
   {
-    GameController.OnBallShot -= OnBallShotHandler;
+    GameController.OnBallShot     -= OnBallShotHandler;
   }
 
   private void OnMinigolfTurnHandler()
