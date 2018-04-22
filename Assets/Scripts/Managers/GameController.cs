@@ -37,22 +37,27 @@ public class GameController : Singleton<GameController>
 
   public void StartGame()
   {
-    int levelToPlay;
-    if(_tutorialPlayed)
+    if (_tutorialPlayed)
     {
-      levelToPlay = UnityEngine.Random.Range(1, _gameSettings.Levels.Count);
+      if (_levelWon)
+      {
+        _levelToPlay = UnityEngine.Random.Range(1, _gameSettings.Levels.Count);
+        _levelWon = false;
+      }
     }
     else
     {
-      levelToPlay = 0;
+      _levelToPlay = 0;
       _tutorialPlayed = true;
     }
-    Debug.Log("Loading level " + levelToPlay);
-    _mapGenerator.Init(_gameSettings.Levels[levelToPlay], _gameSettings.DestructionTime);
+    Debug.Log("Loading level " + _levelToPlay);
+    _mapGenerator.Init(_gameSettings.Levels[_levelToPlay], _gameSettings.DestructionTime);
     OnStartGame();
   }
 
+  private static bool _levelWon = false;
   private static bool _tutorialPlayed = false;
+  private static int _levelToPlay;
 
   public void PlayerMovementTurn()
   {
@@ -122,6 +127,7 @@ public class GameController : Singleton<GameController>
 
   public void PlayerWin()
   {
+    _levelWon = true;
     OnPlayerWin();
   }
 
