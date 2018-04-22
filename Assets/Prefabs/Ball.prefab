@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCharge: 10
   maxCharge: 1000
-  chargeRate: 50
+  chargeRate: 200
   chargeShotUi: {fileID: 0}
   arrowSprite: {fileID: 114986553079885368}
 --- !u!114 &114536700356887016

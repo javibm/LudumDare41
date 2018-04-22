@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: EggMaterial 1
+  m_Name: EggMaterialLightOff
   m_Shader: {fileID: 4800000, guid: 4be5b8a3914d8417caadd7e3c559fd2d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
