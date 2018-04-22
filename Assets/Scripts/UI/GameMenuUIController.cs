@@ -36,6 +36,7 @@ public class GameMenuUIController : MonoBehaviour
     GameOverPanel.SetActive(true);
     winText.SetActive(false);
     loseText.SetActive(true);
+    newGame.sprite = replay;
   }
 
   private void ShowWin()
@@ -43,6 +44,7 @@ public class GameMenuUIController : MonoBehaviour
     GameOverPanel.SetActive(true);
     winText.SetActive(true);
     loseText.SetActive(false);
+    newGame.sprite = next;
   }
 
   private void ReloadScene()
@@ -66,6 +68,15 @@ public class GameMenuUIController : MonoBehaviour
   private Button retryButton;
   [SerializeField]
   private Button menuButton;
+
+  [Space]
+  [SerializeField]
+  private Image newGame;
+  [SerializeField]
+  private Sprite next;
+  [SerializeField]
+  private Sprite replay;
+
 
   [SerializeField]
   private GameObject GameOverPanel;
