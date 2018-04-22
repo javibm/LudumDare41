@@ -14,11 +14,6 @@ public class MapGenerator : MonoBehaviour
 		_mapTiles = new List<MapTile>();
 	}
 
-	void Start ()
-	{
-
-	}
-
 	public void Init (GameSettings.LevelSettings level, float destructionTime)
 	{
 		string mapText = LoadMap();
@@ -27,7 +22,9 @@ public class MapGenerator : MonoBehaviour
 		GenerateMap(mapText);
 		InstantiatePlayerAndBall(_levelSettings.StartRow, _levelSettings.StartCol);
     _currentDestructionRadius = CalculateMaxDestructionRadius();
-		StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
+    RenderSettings.skybox.SetFloat("_DayFactor", 0);
+    DynamicGI.UpdateEnvironment();
+    StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
 	}
 
 	public void InstantiateBall (Vector3 ballPosition)
@@ -231,16 +228,24 @@ public class MapGenerator : MonoBehaviour
 
   private void ChangeSkybox()
   {
-    if (RenderSettings.skybox.HasProperty("Color 2"))
+    if (RenderSettings.skybox.GetFloat("_DayFactor") != 1)
     {
-      Debug.Log("Color 2");
+      StartCoroutine(LerpSkybox());
     }
-    RenderSettings.skybox.SetColor("Color 2", Color.black);
-    Debug.LogError(RenderSettings.skybox.GetColor("Color 2"));
   }
 
-  private void Update()
+  private IEnumerator LerpSkybox()
   {
+    float changeTime = 1;
+    float currentTime = 0;
+    while (currentTime < changeTime)
+    {
+      RenderSettings.skybox.SetFloat("_DayFactor", Mathf.Lerp(0, 1, currentTime /changeTime));
+      currentTime += Time.deltaTime;
+      DynamicGI.UpdateEnvironment();
+      yield return 0;
+    }
+    RenderSettings.skybox.SetFloat("_DayFactor", 1);
     DynamicGI.UpdateEnvironment();
   }
 
@@ -300,12 +305,6 @@ public class MapGenerator : MonoBehaviour
 
 	[SerializeField]
 	private List<Color> _tileColors;
-
-  [SerializeField]
-  private Material _skyboxMaterial;
-
-  [SerializeField]
-  private Color _skyboxDoomColor;
 
 	private List<MapTile> _mapTiles;
 	private int _mapCols;
