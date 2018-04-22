@@ -34,9 +34,10 @@ public class ArrowSprite : MonoBehaviour {
     canvas.transform.parent.eulerAngles = new Vector3(90, 0, 0);
   }
 
-  public void RotateArrow(float rotationX)
+  public void RotateArrow(Vector3 position)
   {
-    canvas.transform.parent.eulerAngles = new Vector3(rotationX, 0, 0) ;
+    canvas.transform.parent.position = position;
+    //canvas.transform.parent.LookAt(position);
   }
 
 }
