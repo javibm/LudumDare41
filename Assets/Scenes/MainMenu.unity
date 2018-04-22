@@ -618,6 +618,31 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8b4bbf76bce76416ca1b03d5fc423c74, type: 2}
+    - target: {fileID: 114986553079885368, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: minScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986553079885368, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: maxScale
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847488376676806, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847488376676806, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847488376676806, guid: 22c90aef8538ad54c9cbba64424c69f7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114967515015534242, guid: 22c90aef8538ad54c9cbba64424c69f7, type: 2}
     - {fileID: 114403371727943176, guid: 22c90aef8538ad54c9cbba64424c69f7, type: 2}
