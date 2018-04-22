@@ -70,18 +70,19 @@ public class AudioManager : MonoBehaviour
     private void PlayRunning()
     {
         float random = Random.Range(0.0f, 1.0f);
-        if (random < 0.3f)
-        {
-            PlaySound(AudioType.Step00, false, true);
-        }
-        else if (random > 0.3f && random < 0.6f)
-        {
-            PlaySound(AudioType.Step01, false, true);
-        }
-        else
-        {
-            PlaySound(AudioType.Step02, false, true);
-        }
+        PlaySound(AudioType.Step00, false, true);
+        // if (random < 0.3f)
+        // {
+        //     PlaySound(AudioType.Step00, false, true);
+        // }
+        // else if (random > 0.3f && random < 0.6f)
+        // {
+        //     PlaySound(AudioType.Step01, false, true);
+        // }
+        // else
+        // {
+        //     PlaySound(AudioType.Step02, false, true);
+        // }
     }
 
     private void StopRunning()
