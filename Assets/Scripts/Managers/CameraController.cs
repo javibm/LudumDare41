@@ -54,7 +54,7 @@ public class CameraController : Singleton<CameraController>
   {
     if (cameraTarget != null)
     {
-        finalPosition = cameraTarget.transform.position + new Vector3(10.0f, 10.0f, 10.0f);
+        finalPosition = cameraTarget.transform.position + new Vector3(10.0f, 8.5f, 10.0f);
         transform.position = finalPosition;
     }
   }
