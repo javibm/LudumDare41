@@ -161,7 +161,6 @@ public class BallInput : MonoBehaviour {
     {
       transform.position = lastPosition;
     }
-    GetComponent<BallMovement>().StopMovement();
   }
 
   private IEnumerator CallEndOfGame()
