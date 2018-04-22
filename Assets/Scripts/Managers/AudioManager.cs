@@ -24,7 +24,8 @@ public class AudioManager : MonoBehaviour
         Step00,
         Step01,
         Step02,
-        Lava
+        LavaBall,
+        LavaDino
     }
 
     void Start()
@@ -102,6 +103,14 @@ public class AudioManager : MonoBehaviour
     private void PlayParir()
     {
         PlaySound(AudioType.Parir);
+    }
+    private void PlayLavaDino()
+    {
+        PlaySound(AudioType.LavaDino);
+    }
+    private void PlayLavaBall()
+    {
+        PlaySound(AudioType.LavaBall);
     }
 
     void OnDestroy()
