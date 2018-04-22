@@ -36,9 +36,22 @@ public class GameController : Singleton<GameController>
 
   public void StartGame()
   {
-    _mapGenerator.Init(_gameSettings.Levels[0], _gameSettings.DestructionTime);
+    int levelToPlay;
+    if(_tutorialPlayed)
+    {
+      levelToPlay = UnityEngine.Random.Range(1, _gameSettings.Levels.Count);
+    }
+    else
+    {
+      levelToPlay = 0;
+      _tutorialPlayed = true;
+    }
+    Debug.Log("Loading level " + levelToPlay);
+    _mapGenerator.Init(_gameSettings.Levels[levelToPlay], _gameSettings.DestructionTime);
     OnStartGame();
   }
+
+  private static bool _tutorialPlayed = false;
 
   public void PlayerMovementTurn()
   {
