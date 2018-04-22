@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4300137, g: 0.74655354, b: 0.84904224, a: 1}
+  m_IndirectSpecularColor: {r: 0.5415311, g: 0.6150824, b: 0.6924245, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -359,6 +359,9 @@ MonoBehaviour:
   loseText: {fileID: 1319734751}
   retryButton: {fileID: 1319734750}
   menuButton: {fileID: 1319734749}
+  newGame: {fileID: 1319734756}
+  next: {fileID: 21300000, guid: b879e1fc864f80742af4ef0ffda918cc, type: 3}
+  replay: {fileID: 21300000, guid: 08d3c02c1a2014b0394cbd94951733e4, type: 3}
   GameOverPanel: {fileID: 352662776}
 --- !u!1 &854829844
 GameObject:
@@ -642,6 +645,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1599422781142584, guid: 04d37114c832e408380b79beb527a39e,
     type: 2}
   m_PrefabInternal: {fileID: 1319734748}
+--- !u!114 &1319734756 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114163541048465514, guid: 04d37114c832e408380b79beb527a39e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319734748}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1466830171
 GameObject:
   m_ObjectHideFlags: 0
