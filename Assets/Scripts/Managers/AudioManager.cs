@@ -22,8 +22,6 @@ public class AudioManager : MonoBehaviour
         Parir,
         Death_00,
         Step00,
-        Step01,
-        Step02,
         LavaBall,
         LavaDino
     }
@@ -36,7 +34,7 @@ public class AudioManager : MonoBehaviour
         //     Destroy(gameObject);
         // }
         // PlaySound(AudioType.Main, true);
-        // PlaySound(AudioType.Loop, true);
+        PlaySound(AudioType.Loop, true);
         GameController.OnBallShot += PlayWhispSound;
         GameController.OnEndGame += PlayDeath00;
         GameController.OnStartGame += PlayParirTime;
