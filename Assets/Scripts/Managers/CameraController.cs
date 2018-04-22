@@ -10,11 +10,7 @@ public class CameraController : Singleton<CameraController>
     GameController.OnResetBallPosition += ResetPosition;
 
     camera = GetComponent<Camera>();
-    player = GameObject.FindGameObjectWithTag("Player");
-    ball = GameObject.FindGameObjectWithTag("Ball");
-
-    cameraTarget = player;
-    
+    LookForPlayerAndBall();
 
     camera.orthographicSize = minZoom;
 
@@ -28,10 +24,28 @@ public class CameraController : Singleton<CameraController>
     GameController.OnResetBallPosition -= ResetPosition;
   }
 
+    private void LookForPlayerAndBall()
+  {
+    player = GameObject.FindGameObjectWithTag("Player");
+    ball = GameObject.FindGameObjectWithTag("Ball");
+    if(player == null || ball == null)
+    {
+      MapGenerator.OnPlayerSpawned += LookForPlayerAndBall;
+      return;
+    }
+    else
+    {
+      FollowCharacter();
+    }
+  }
+
   void Update()
   {
-    finalPosition = cameraTarget.transform.position + new Vector3(6.0f, 6.0f, 6.0f);
-    transform.position = finalPosition;
+    if (cameraTarget != null)
+    {
+      finalPosition = cameraTarget.transform.position + new Vector3(6.0f, 6.0f, 6.0f);
+      transform.position = finalPosition;
+    }
   }
 
   void ResetPosition()

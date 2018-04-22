@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour 
 {
+	public static event Action OnPlayerSpawned = delegate {};
+
 	void Awake () 
 	{
 		_mapTiles = new List<MapTile>();
@@ -16,30 +18,43 @@ public class MapGenerator : MonoBehaviour
 
 	}
 
-	public void Init(int goalRow, int goalCol, float destructionTime)
+	public void Init (GameSettings.LevelSettings level, float destructionTime)
 	{
 		string mapText = LoadMap();
-		_goalRow = goalRow;
-		_goalCol = goalRow;
+		_levelSettings = level;
 		_destructionTime = destructionTime;
 		GenerateMap(mapText);
+		InstantiatePlayerAndBall(_levelSettings.StartRow, _levelSettings.StartCol);
     _currentDestructionRadius = CalculateMaxDestructionRadius();
 		StartCoroutine(DestroyWorldCorroutine(_destructionTime));	
 	}
+
+	private void InstantiatePlayerAndBall (int startRow, int startCol)
+	{
+		MapTile mt = GetMapTile(startRow, startCol);
+		Instantiate(_playerPrefab, mt.transform.position, Quaternion.identity);
+		Instantiate(_ballPrefab, mt.transform.position, Quaternion.identity);
+		OnPlayerSpawned();
+	}
+
+	[SerializeField]
+	private GameObject _playerPrefab;
+	[SerializeField]
+	private GameObject _ballPrefab;
 
 	private IEnumerator DestroyWorldCorroutine (float destructionTime)
 	{
 		while (true)
 		{
 			yield return new WaitForSeconds(destructionTime);
-			DestroyBorderTiles(_goalRow, _goalCol, false);
+			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
 		}
 	}
 	
 	private int CalculateMaxDestructionRadius()
 	{
-		int a = System.Math.Max(_goalRow, _goalCol);
-		int b = System.Math.Max(_mapRows - 1 - _goalRow, _mapCols - 1 - _goalCol);
+		int a = System.Math.Max(_levelSettings.GoalRow, _levelSettings.GoalCol);
+		int b = System.Math.Max(_mapRows - 1 - _levelSettings.GoalRow, _mapCols - 1 - _levelSettings.GoalCol);
 		return System.Math.Max(a,b);
 	}
 
@@ -148,9 +163,9 @@ public class MapGenerator : MonoBehaviour
 			col = 0;
 		}
 
-		MapTile goalTile = GetMapTile(_goalRow, _goalCol);
-		Instantiate(_goalPrefab, goalTile.transform.position, Quaternion.identity);
-		goalTile.transform.SetParent(goalTile.transform);
+		MapTile goalTile = GetMapTile(_levelSettings.GoalRow, _levelSettings.GoalCol);
+		GameObject go = Instantiate(_goalPrefab, goalTile.transform.position, Quaternion.identity);
+		go.transform.SetParent(goalTile.transform);
 	}
 
 	private MapTile GetMapTile (int row, int col)
@@ -183,17 +198,17 @@ public class MapGenerator : MonoBehaviour
 		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
 		{
 			DestroyMap();
-			Init(_goalRow, _goalCol, _destructionTime);
+			Init(_levelSettings, _destructionTime);
     }
 
 		if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
 		{
-			DestroyBorderTiles(_goalRow, _goalCol, false);
+			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
     }
 
 		if (GUI.Button(new Rect(100, 50, 80, 30), "Destroy 2"))
 		{
-			DestroyBorderTiles(_goalRow, _goalCol, true);
+			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, true);
     }
 	}
 
@@ -232,8 +247,7 @@ public class MapGenerator : MonoBehaviour
 	private int _mapCols;
 	private int _mapRows;
 
-	private int _goalRow;
-	private int _goalCol;
+	private GameSettings.LevelSettings _levelSettings;
 	private float _destructionTime;
 
 	private int _currentDestructionRadius;

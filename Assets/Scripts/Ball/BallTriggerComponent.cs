@@ -8,7 +8,7 @@ public class BallTriggerComponent : MonoBehaviour {
 
   private Collider trigger;
 
-  private void Start()
+  private void Awake()
   {
     trigger = GetComponent<Collider>();
   }
