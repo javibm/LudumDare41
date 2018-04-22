@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697a98d5a3607412c936edf3ce543d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targetIconOffScreen: {fileID: 21300000, guid: 3895282dd688c4227b3958de4d2ae405,
+  m_targetIconOffScreen: {fileID: 21300000, guid: 2522fbc82557d3247a74f7ae6af87393,
     type: 3}
   m_edgeBuffer: 10
   m_targetIconScale: {x: 0.2, y: 0.2, z: 0.2}
