@@ -22,6 +22,7 @@ public class TargetIndicator : MonoBehaviour
         m_icon.localScale = m_targetIconScale;
         m_icon.name = name + ": OTI icon";
         m_iconImage = m_icon.gameObject.AddComponent<Image>();
+        // var tweener = m_icon.gameObject.AddComponent<Utils.UI.ColorAlfaTweener>();
         m_iconImage.enabled = false;
     }
     private void UpdateTargetIconPosition()
