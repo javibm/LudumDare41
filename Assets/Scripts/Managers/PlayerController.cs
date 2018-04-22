@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public void StartMovement()
     {
         shouldMove = true;
-        GameController.Instance.BallReady();
+        GameController.Instance.BallReady(ballTransform);
     }
 
     private bool shouldMove;
@@ -80,4 +80,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float speedRotation;
+
+    [SerializeField]
+    private Transform ballTransform;
 }
