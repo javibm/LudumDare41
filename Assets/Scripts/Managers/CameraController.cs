@@ -49,6 +49,7 @@ public class CameraController : Singleton<CameraController>
 
   public void FollowCharacter()
   {
+    Time.timeScale = 1f;
     cameraTarget = player;
   }
 
@@ -56,6 +57,7 @@ public class CameraController : Singleton<CameraController>
   {
     cameraTarget = ball;
     ZoomIn();
+    Time.timeScale = 0.5f;
   }
 
   private void ZoomIn()
