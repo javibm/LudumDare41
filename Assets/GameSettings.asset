@@ -13,71 +13,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destructionTime: 1000
   _levels:
-  - StartRow: 2
-    StartCol: 3
-    GoalRow: 2
-    GoalCol: 16
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 20
+    StartCol: 9
+    GoalRow: 14
+    GoalCol: 10
+  - StartRow: 24
+    StartCol: 7
     GoalRow: 2
     GoalCol: 14
   - StartRow: 2
-    StartCol: 3
+    StartCol: 25
     GoalRow: 4
     GoalCol: 12
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 23
+    StartCol: 23
     GoalRow: 3
     GoalCol: 9
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 34
+    StartCol: 34
     GoalRow: 6
     GoalCol: 30
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 25
+    StartCol: 13
     GoalRow: 1
     GoalCol: 29
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 11
+    StartCol: 24
     GoalRow: 30
     GoalCol: 30
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 23
+    StartCol: 1
     GoalRow: 21
     GoalCol: 30
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 31
+    StartCol: 23
     GoalRow: 19
     GoalCol: 23
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 29
+    StartCol: 1
     GoalRow: 15
     GoalCol: 15
   - StartRow: 2
-    StartCol: 3
+    StartCol: 16
     GoalRow: 25
     GoalCol: 13
   - StartRow: 2
-    StartCol: 3
+    StartCol: 24
     GoalRow: 28
     GoalCol: 17
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 31
+    StartCol: 14
     GoalRow: 29
     GoalCol: 2
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 17
+    StartCol: 4
     GoalRow: 24
     GoalCol: 4
-  - StartRow: 2
-    StartCol: 3
+  - StartRow: 31
+    StartCol: 16
     GoalRow: 25
     GoalCol: 6
   - StartRow: 2
     StartCol: 3
     GoalRow: 20
     GoalCol: 12
-  - StartRow: 2
-    StartCol: 3
-    GoalRow: 14
-    GoalCol: 10
+  - StartRow: 31
+    StartCol: 23
+    GoalRow: 2
+    GoalCol: 16
