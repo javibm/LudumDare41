@@ -28,7 +28,10 @@ public class MainMenuUIController : MonoBehaviour
         creditsTweener.PlayTweener();
         playTweener.PlayTweener();
         logoTweener.PlayTweener();
-        creditsObjectTweener.PlayTweener();
+        if (creditsObject.activeSelf)
+        {
+            creditsObjectTweener.PlayTweener();
+        }
         howToPlayPanel.SetActive(true);
     }
 
