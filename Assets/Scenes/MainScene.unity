@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4300137, g: 0.74655354, b: 0.84904224, a: 1}
+  m_IndirectSpecularColor: {r: 0.45231587, g: 0.71991247, b: 0.81749386, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -358,6 +358,7 @@ MonoBehaviour:
   winText: {fileID: 1319734752}
   loseText: {fileID: 1319734751}
   retryButton: {fileID: 1319734750}
+  nextButton: {fileID: 1644119100}
   menuButton: {fileID: 1319734749}
   GameOverPanel: {fileID: 352662776}
 --- !u!1 &854829844
@@ -628,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1319734750 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114290531126928206, guid: 04d37114c832e408380b79beb527a39e,
+  m_PrefabParentObject: {fileID: 114325616360970588, guid: 04d37114c832e408380b79beb527a39e,
     type: 2}
   m_PrefabInternal: {fileID: 1319734748}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -757,6 +758,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c118d11abafbc314b8250017438d6da3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1644119100 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114290531126928206, guid: 04d37114c832e408380b79beb527a39e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319734748}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1786110101
 Prefab:
   m_ObjectHideFlags: 0
