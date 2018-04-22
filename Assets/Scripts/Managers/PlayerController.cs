@@ -4,83 +4,92 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    void Awake()
+  void Awake()
+  {
+    shouldMove = false;
+    Invoke("StartMovement", 1.8f);
+  }
+  void Start()
+  {
+    GameController.OnMinigolfTurn += StopMovement;
+    GameController.OnPlayerMovementTurn += ResumeMovement;
+    GameController.OnPlayerDead += StopMovement;
+  }
+
+  void OnDestroy()
+  {
+    GameController.OnMinigolfTurn -= StopMovement;
+    GameController.OnPlayerMovementTurn -= ResumeMovement;
+    GameController.OnPlayerDead -= StopMovement;
+  }
+
+  void Update()
+  {
+    if (shouldMove)
     {
-        shouldMove = false;
-        Invoke("StartMovement", 1.8f);
-    }
-    void Start()
-    {
-        GameController.OnMinigolfTurn += StopMovement;
-        GameController.OnPlayerMovementTurn += ResumeMovement;
-    }
-    void Update()
-    {
-        if (shouldMove)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                GameController.Instance.PlayerRun();
-                transform.position += Time.deltaTime * speed * transform.forward;
-            }
-            else
-            {
-                GameController.Instance.PlayerStop();
-            }
-        }
-
-        if (transform.position.y < -1.5)
-        {
-            GameController.Instance.EndGame();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (shouldMove)
-        {
-            Plane playerPlane = new Plane(Vector3.up, transform.position);
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            float hitdist = 0.0f;
-
-            if (playerPlane.Raycast(ray, out hitdist))
-            {
-                Vector3 targetPoint = ray.GetPoint(hitdist);
-
-                Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
-            }
-
-        }
+      if (Input.GetMouseButton(0))
+      {
+        GameController.Instance.PlayerRun();
+        transform.position += Time.deltaTime * speed * transform.forward;
+      }
+      else
+      {
+        GameController.Instance.PlayerStop();
+      }
     }
 
-    public void StopMovement()
+    if (shouldMove && transform.position.y < -1)
     {
-        shouldMove = false;
+      GameController.Instance.PlayerDead();
     }
+  }
 
-    public void ResumeMovement()
+  void FixedUpdate()
+  {
+    if (shouldMove)
     {
-        shouldMove = true;
+      Plane playerPlane = new Plane(Vector3.up, transform.position);
+
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+      float hitdist = 0.0f;
+
+      if (playerPlane.Raycast(ray, out hitdist))
+      {
+        Vector3 targetPoint = ray.GetPoint(hitdist);
+
+        Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
+      }
+
     }
+  }
 
-    public void StartMovement()
-    {
-        shouldMove = true;
-        GameController.Instance.BallReady(ballTransform);
-    }
+  public void StopMovement()
+  {
+    shouldMove = false;
+  }
 
-    private bool shouldMove;
+  public void ResumeMovement()
+  {
+    shouldMove = true;
+  }
 
-    [SerializeField]
-    private float speed;
+  public void StartMovement()
+  {
+    shouldMove = true;
+    GameController.Instance.BallReady(ballTransform);
+  }
 
-    [SerializeField]
-    private float speedRotation;
+  private bool shouldMove;
 
-    [SerializeField]
-    private Transform ballTransform;
+  [SerializeField]
+  private float speed;
+
+  [SerializeField]
+  private float speedRotation;
+
+  [SerializeField]
+  private Transform ballTransform;
 }

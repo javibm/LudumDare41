@@ -17,6 +17,7 @@ public class AnimationController : MonoBehaviour
         GameController.OnBallShot += GoToHit;
         GameController.OnPlayerRunning += GoToRun;
         GameController.OnPlayerStop += GoToIdle;
+        GameController.OnPlayerDead += GoToRun;
     }
 
     void GoToRun()
