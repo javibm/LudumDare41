@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 114599599228105780}
   - {fileID: 114334852288855726}
   - {fileID: 114566781465963416}
-  m_FixedDuration: 7.266666666666
+  m_FixedDuration: 10.5
   m_EditorSettings:
     m_Framerate: 60
   m_DurationMode: 1
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset of Recorded (2)
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 74865036229253398}
-  m_Position: {x: 11.89, y: 0.1, z: 11.4}
+  m_Position: {x: 11.89, y: -0.1, z: 11.4}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_UseTrackMatchFields: 0
   m_MatchTargetFields: 63
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset of Recorded (1)
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 74679300030042678}
-  m_Position: {x: 11.83, y: 0.02, z: 12.088}
+  m_Position: {x: 11.83, y: -0.1, z: 12.088}
   m_Rotation: {x: 0, y: 0.9902969, z: 0, w: 0.13896835}
   m_UseTrackMatchFields: 0
   m_MatchTargetFields: 63

@@ -249,24 +249,24 @@ public class MapGenerator : MonoBehaviour
     DynamicGI.UpdateEnvironment();
   }
 
-  void OnGUI ()
-	{
-		if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
-		{
-			DestroyMap();
-			Init(_levelSettings, _destructionTime);
-    }
+  // void OnGUI ()
+	// {
+	// 	if (GUI.Button(new Rect(10, 10, 80, 30), "Regenerate!"))
+	// 	{
+	// 		DestroyMap();
+	// 		Init(_levelSettings, _destructionTime);
+  //   }
 
-		if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
-		{
-			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
-    }
+	// 	if (GUI.Button(new Rect(100, 10, 80, 30), "Destroy 1"))
+	// 	{
+	// 		DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, false);
+  //   }
 
-		if (GUI.Button(new Rect(100, 50, 80, 30), "Destroy 2"))
-		{
-			DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, true);
-    }
-	}
+	// 	if (GUI.Button(new Rect(100, 50, 80, 30), "Destroy 2"))
+	// 	{
+	// 		DestroyBorderTiles(_levelSettings.GoalRow, _levelSettings.GoalCol, true);
+  //   }
+	// }
 
 	private string LoadMap()
   {	
