@@ -103,7 +103,7 @@ public class BallInput : MonoBehaviour {
   private void getDirection() {
 
     var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+    plane.SetNormalAndPosition(plane.normal, new Vector3(0f,transform.position.y, 0f));
     float enter;
     if (plane.Raycast(ray, out enter))
     {
