@@ -17,6 +17,11 @@ public class ArrowSprite : MonoBehaviour {
     GameController.OnBallShot     += OnBallShotHandler;
   }
 
+  private void OnDisable()
+  {
+    GameController.OnBallShot -= OnBallShotHandler;
+  }
+
   private void OnMinigolfTurnHandler()
   {
     EnableArrow(true);
