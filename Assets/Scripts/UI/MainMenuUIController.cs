@@ -8,6 +8,7 @@ public class MainMenuUIController : MonoBehaviour
     void Awake()
     {
         // Buttons listeners
+        audioSource = GetComponent<AudioSource>();
         howToPlayButton.onClick.AddListener(OnHowToPlayButtonClick);
         playButton.onClick.AddListener(OnPlayButtonClick);
         creditsButton.onClick.AddListener(OnCreditsButtonClick);
@@ -15,24 +16,27 @@ public class MainMenuUIController : MonoBehaviour
         howToPlayPanel.SetActive(false);
     }
 
-  void Start()
-  {
-    RenderSettings.skybox.SetFloat("_DayFactor", 0);
-    DynamicGI.UpdateEnvironment();
-  }
-
-  private void OnHowToPlayButtonClick()
+    void Start()
     {
+        RenderSettings.skybox.SetFloat("_DayFactor", 0);
+        DynamicGI.UpdateEnvironment();
+    }
+
+    private void OnHowToPlayButtonClick()
+    {
+        audioSource.Play();
         howToPlayPanel.SetActive(true);
     }
 
     private void OnPlayButtonClick()
     {
+        audioSource.Play();
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     private void OnCreditsButtonClick()
     {
+        audioSource.Play();
         creditsObject.SetActive(true);
 
         List<string> teamNames = new List<string>();
@@ -63,4 +67,5 @@ public class MainMenuUIController : MonoBehaviour
     private GameObject howToPlayPanel;
     [SerializeField]
     private List<Text> creditLabelsList;
+    private AudioSource audioSource;
 }

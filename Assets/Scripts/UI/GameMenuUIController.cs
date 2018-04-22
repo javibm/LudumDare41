@@ -21,16 +21,18 @@ public class GameMenuUIController : MonoBehaviour
 
     private void OnRetryButtonClick()
     {
+        GameController.Instance.ButtonClick();
         ReloadScene();
     }
 
     private void OnTweetButtonClick()
     {
-
+        GameController.Instance.ButtonClick();
     }
 
     private void OnMenuButtonClick()
     {
+        GameController.Instance.ButtonClick();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
