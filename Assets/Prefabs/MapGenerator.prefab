@@ -51,6 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cdf939ed90da84eb8bcb2bf1421dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 1549564553403082, guid: cd3001ca12d7442d8abab652c6fa66a5,
+    type: 2}
+  _ballPrefab: {fileID: 1183898293514910, guid: 22c90aef8538ad54c9cbba64424c69f7,
+    type: 2}
   _tileSeparation: 1
   _tilePrefabs:
   - variants:

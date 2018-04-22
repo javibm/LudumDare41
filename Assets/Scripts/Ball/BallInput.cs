@@ -59,7 +59,7 @@ public class BallInput : MonoBehaviour {
       arrowSprite.EnableArrow(true);
       preparedToPlayGolf = false;
       mousePress();
-      chargeShotUi.EnableCharge(true);
+      //chargeShotUi.EnableCharge(true);
     }
 
     if (mouseDown)
@@ -92,7 +92,7 @@ public class BallInput : MonoBehaviour {
   private void mouseRelease() {
     GameController.Instance.BallShot();
     mouseDown = false;
-    chargeShotUi.EnableCharge(false);
+    //chargeShotUi.EnableCharge(false);
     StartCoroutine(waitToApplyForce());
     StartCoroutine(waitToReturnPlayerControl());
   }
@@ -145,7 +145,7 @@ public class BallInput : MonoBehaviour {
         chargingUpwards = true;
       }
     }
-    chargeShotUi.SetCharge(currentCharge, maxCharge);
+    //chargeShotUi.SetCharge(currentCharge, maxCharge);
   }
 
   private void OnDrawGizmos()
