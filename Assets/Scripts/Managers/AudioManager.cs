@@ -24,17 +24,13 @@ public class AudioManager : MonoBehaviour
         Step00,
         LavaBall,
         LavaDino,
-        Fanfare
+        Fanfare,
+        BallFall,
+        Button
     }
 
     void Start()
     {
-        // DontDestroyOnLoad(gameObject);
-        // if (FindObjectsOfType(GetType()).Length > 1)
-        // {
-        //     Destroy(gameObject);
-        // }
-        // PlaySound(AudioType.Main, true);
         PlaySound(AudioType.Loop, true);
         GameController.OnBallShot += PlayWhispSound;
         GameController.OnEndGame += PlayDeath00;
@@ -42,6 +38,10 @@ public class AudioManager : MonoBehaviour
         GameController.OnPlayerRunning += PlayRunning;
         GameController.OnPlayerStop += StopRunning;
         GameController.OnPlayerWin += PlayFanfare;
+        GameController.OnBallFall += PlayBallFall;
+        GameController.OnBallLava += PlayBallLava;
+        GameController.OnCharacterLava += PlayCharacterLava;
+        GameController.OnButtonClicked += PlayButton;
     }
 
     private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f)
@@ -71,7 +71,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayRunning()
     {
-        float random = Random.Range(0.0f, 1.0f);
         PlaySound(AudioType.Step00, false, 1.0f);
     }
 
@@ -117,6 +116,26 @@ public class AudioManager : MonoBehaviour
         PlaySound(AudioType.Fanfare);
     }
 
+    private void PlayBallFall()
+    {
+        PlaySound(AudioType.BallFall);
+    }
+
+    private void PlayBallLava()
+    {
+        PlaySound(AudioType.LavaBall);
+    }
+
+    private void PlayCharacterLava()
+    {
+        PlaySound(AudioType.LavaDino);
+    }
+
+    private void PlayButton()
+    {
+        PlaySound(AudioType.Button);
+    }
+
     void OnDestroy()
     {
         GameController.OnBallShot -= PlayWhispSound;
@@ -125,6 +144,10 @@ public class AudioManager : MonoBehaviour
         GameController.OnPlayerRunning -= PlayRunning;
         GameController.OnPlayerStop -= StopRunning;
         GameController.OnPlayerWin -= PlayFanfare;
+        GameController.OnBallFall -= PlayBallFall;
+        GameController.OnBallLava -= PlayBallLava;
+        GameController.OnCharacterLava -= PlayCharacterLava;
+        GameController.OnButtonClicked -= PlayButton;
     }
 
     [SerializeField]

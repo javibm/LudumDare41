@@ -23,6 +23,7 @@ public class GameController : Singleton<GameController>
   public static event Action OnBallFall = delegate { };
   public static event Action OnBallHit = delegate { };
   public static event Action OnPlayerWin = delegate { };
+  public static event Action OnButtonClicked = delegate { };
 
   protected new void Awake()
   {
@@ -124,6 +125,11 @@ public class GameController : Singleton<GameController>
     OnPlayerWin();
   }
 
+  public void ButtonClick()
+  {
+    OnButtonClicked();
+  }
+  
   [SerializeField]
   private MapGenerator _mapGenerator;
 
