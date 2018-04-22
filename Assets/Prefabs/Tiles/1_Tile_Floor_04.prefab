@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 33291341609663068}
   - component: {fileID: 23040774167388924}
   - component: {fileID: 95078589216567698}
+  - component: {fileID: 114925756460702080}
   m_Layer: 0
   m_Name: planta02
   m_TagString: Untagged
@@ -620,5 +621,21 @@ MonoBehaviour:
   maxRotationX: 15
   maxRotationY: 20
   maxRotationZ: 10
+  speed: 1
+  maxDelay: 0.5
+--- !u!114 &114925756460702080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1868720287442508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b837cd26255944c9db70c752176ff02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotationX: 10
+  maxRotationY: 15
+  maxRotationZ: 5
   speed: 1
   maxDelay: 0.5
