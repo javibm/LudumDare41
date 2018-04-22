@@ -17,16 +17,17 @@ public class GameMenuUIController : MonoBehaviour
   {
     GameController.OnEndGame += ShowGameOver;
     GameController.OnPlayerWin += ShowWin;
-
   }
 
   private void OnRetryButtonClick()
   {
+    GameController.Instance.ButtonClick();
     ReloadScene();
   }
 
   private void OnMenuButtonClick()
   {
+    GameController.Instance.ButtonClick();
     UnityEngine.SceneManagement.SceneManager.LoadScene(0);
   }
 
