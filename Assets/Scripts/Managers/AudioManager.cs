@@ -23,7 +23,8 @@ public class AudioManager : MonoBehaviour
         Death_00,
         Step00,
         Step01,
-        Step02
+        Step02,
+        Lava
     }
 
     void Start()
@@ -71,18 +72,6 @@ public class AudioManager : MonoBehaviour
     {
         float random = Random.Range(0.0f, 1.0f);
         PlaySound(AudioType.Step00, false, true);
-        // if (random < 0.3f)
-        // {
-        //     PlaySound(AudioType.Step00, false, true);
-        // }
-        // else if (random > 0.3f && random < 0.6f)
-        // {
-        //     PlaySound(AudioType.Step01, false, true);
-        // }
-        // else
-        // {
-        //     PlaySound(AudioType.Step02, false, true);
-        // }
     }
 
     private void StopRunning()
