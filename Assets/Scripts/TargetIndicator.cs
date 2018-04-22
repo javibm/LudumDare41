@@ -5,7 +5,7 @@ public class TargetIndicator : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        mainCanvas = FindObjectsOfType<Canvas>()[1];
+        mainCanvas = FindObjectOfType<Canvas>();
         Debug.Assert((mainCanvas != null), "There needs to be a Canvas object in the scene for the OTI to display");
         InstainateTargetIcon();
     }
@@ -22,6 +22,7 @@ public class TargetIndicator : MonoBehaviour
         m_icon.localScale = m_targetIconScale;
         m_icon.name = name + ": OTI icon";
         m_iconImage = m_icon.gameObject.AddComponent<Image>();
+        // var tweener = m_icon.gameObject.AddComponent<Utils.UI.ColorAlfaTweener>();
         m_iconImage.enabled = false;
     }
     private void UpdateTargetIconPosition()

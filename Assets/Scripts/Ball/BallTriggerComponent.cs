@@ -11,16 +11,24 @@ public class BallTriggerComponent : MonoBehaviour {
   private void Awake()
   {
     trigger = GetComponent<Collider>();
+    trigger.enabled = false;
+  }
+
+  public void InitTrigger()
+  {
+    trigger.enabled = true;
   }
 
   private void OnEnable()
   {
+    GameController.OnBallReady += InitTrigger;
     GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
     GameController.OnPlayerMovementTurn += OnPlayerMovementTurnHandler;
   }
 
   private void OnDisable()
   {
+    GameController.OnBallReady -= InitTrigger;
     GameController.OnMinigolfTurn -= OnMinigolfTurnHandler;
     GameController.OnPlayerMovementTurn -= OnPlayerMovementTurnHandler;
   }

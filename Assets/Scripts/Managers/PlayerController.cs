@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         shouldMove = false;
-        Invoke("ResumeMovement", 1.8f);
+        Invoke("StartMovement", 1.8f);
     }
     void Start()
     {
@@ -65,6 +65,12 @@ public class PlayerController : MonoBehaviour
     public void ResumeMovement()
     {
         shouldMove = true;
+    }
+
+    public void StartMovement()
+    {
+        shouldMove = true;
+        GameController.Instance.BallReady();
     }
 
     private bool shouldMove;

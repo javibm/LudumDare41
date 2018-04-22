@@ -22,6 +22,7 @@ public class BallInput : MonoBehaviour {
 
   Vector3 finalDirection;
 
+  private Vector3 finalHitPoint;
   bool chargingUpwards = true;
   float currentCharge;
 
@@ -59,7 +60,6 @@ public class BallInput : MonoBehaviour {
       arrowSprite.EnableArrow(true);
       preparedToPlayGolf = false;
       mousePress();
-      //chargeShotUi.EnableCharge(true);
     }
 
     if (mouseDown)
@@ -92,7 +92,6 @@ public class BallInput : MonoBehaviour {
   private void mouseRelease() {
     GameController.Instance.BallShot();
     mouseDown = false;
-    //chargeShotUi.EnableCharge(false);
     StartCoroutine(waitToApplyForce());
     StartCoroutine(waitToReturnPlayerControl());
   }
@@ -104,13 +103,20 @@ public class BallInput : MonoBehaviour {
     float enter;
     if (plane.Raycast(ray, out enter))
     {
-      var hitPoint = ray.GetPoint(enter);
-      finalDirection = hitPoint - transform.position;
+      finalHitPoint = ray.GetPoint(enter);
+      finalDirection = finalHitPoint - transform.position;
       finalDirection = Vector3.Normalize(finalDirection);
       finalDirection.y = 0;
       arrowSprite.RotateArrow(finalDirection);
     }
+  }
 
+  private void chargeShot()
+  {
+    currentCharge = (finalHitPoint - transform.position).magnitude;
+    currentCharge = currentCharge * chargeRate;
+    currentCharge = Mathf.Clamp(currentCharge, minCharge, maxCharge);
+    arrowSprite.ScaleArrow(currentCharge, minCharge, maxCharge);
   }
 
   private IEnumerator waitToApplyForce()
@@ -125,29 +131,6 @@ public class BallInput : MonoBehaviour {
     GameController.Instance.PlayerMovementTurn();
   }
 
-  private void chargeShot()
-  {
-    if (chargingUpwards)
-    {
-      currentCharge += (chargeRate + currentCharge/20);
-      if (currentCharge >= maxCharge)
-      {
-        currentCharge = maxCharge;
-        chargingUpwards = false;
-      }
-    }
-    else
-    {
-      currentCharge -= (chargeRate + currentCharge/20);
-      if (currentCharge <= minCharge)
-      {
-        currentCharge = minCharge;
-        chargingUpwards = true;
-      }
-    }
-    //chargeShotUi.SetCharge(currentCharge, maxCharge);
-  }
-
   private void OnDrawGizmos()
   {
     if (mouseDown)
@@ -160,6 +143,17 @@ public class BallInput : MonoBehaviour {
 
   private void OnResetLastPosition()
   {
+    RaycastHit hit;
+    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+    {
+      transform.position = lastPosition;
+      Debug.Log("Did Hit", this);
+    }
+    else
+    {
+      transform.position = player.transform.position;
+      Debug.Log("Did not hit", this);
+    }
     transform.position = lastPosition;
   }
 }
