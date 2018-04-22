@@ -55,6 +55,7 @@ public class BallInput : MonoBehaviour {
   void Update () {
     if (!mouseDown && preparedToPlayGolf && Input.GetMouseButtonDown(0))
     {
+      arrowSprite.EnableArrow(true);
       preparedToPlayGolf = false;
       mousePress();
       chargeShotUi.EnableCharge(true);
