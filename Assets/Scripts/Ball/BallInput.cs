@@ -52,13 +52,14 @@ public class BallInput : MonoBehaviour {
   }
 
   // Update is called once per frame
-  void Update () {
+  void Update()
+  {
     if (!mouseDown && preparedToPlayGolf && Input.GetMouseButtonDown(0))
     {
       arrowSprite.EnableArrow(true);
       preparedToPlayGolf = false;
       mousePress();
-      chargeShotUi.EnableCharge(true);
+      //chargeShotUi.EnableCharge(true);
     }
 
     if (mouseDown)
@@ -72,11 +73,15 @@ public class BallInput : MonoBehaviour {
       }
     }
 
-    if (transform.position.y < -1.5)
+    if (transform.position.y < -5)
     {
       GameController.Instance.ResetBallPosition();
     }
-	}
+    else if (transform.position.y < -1.5)
+    {
+      CameraController.Instance.FollowBall();
+    }
+  }
 
   private void mousePress()
   {
@@ -87,7 +92,7 @@ public class BallInput : MonoBehaviour {
   private void mouseRelease() {
     GameController.Instance.BallShot();
     mouseDown = false;
-    chargeShotUi.EnableCharge(false);
+    //chargeShotUi.EnableCharge(false);
     StartCoroutine(waitToApplyForce());
     StartCoroutine(waitToReturnPlayerControl());
   }
@@ -140,7 +145,7 @@ public class BallInput : MonoBehaviour {
         chargingUpwards = true;
       }
     }
-    chargeShotUi.SetCharge(currentCharge, maxCharge);
+    //chargeShotUi.SetCharge(currentCharge, maxCharge);
   }
 
   private void OnDrawGizmos()

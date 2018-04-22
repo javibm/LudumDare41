@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
@@ -15,7 +14,7 @@ public class GameController : Singleton<GameController>
     public static event Action OnBallShot = delegate { };
     public static event Action OnResetBallPosition = delegate { };
 
-  protected new void Awake()
+    protected new void Awake()
     {
         base.Awake();
     }
@@ -27,6 +26,7 @@ public class GameController : Singleton<GameController>
 
     public void StartGame()
     {
+        _mapGenerator.Init(_gameSettings.Levels[0], _gameSettings.DestructionTime);
         OnStartGame();
     }
 
@@ -63,12 +63,11 @@ public class GameController : Singleton<GameController>
     public void EndGame()
     {
         OnEndGame();
-        ReloadScene();
     }
 
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    [SerializeField]
+    private MapGenerator _mapGenerator;
 
-    }
+    [SerializeField]
+    private GameSettings _gameSettings;
 }
