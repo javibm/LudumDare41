@@ -11,8 +11,6 @@ public class BallInput : MonoBehaviour {
   [SerializeField]
   private float chargeRate = 0.1f;
   [SerializeField]
-  private ChargeShotUI chargeShotUi;
-  [SerializeField]
   private ArrowSprite arrowSprite;
 
   private Vector3 lastPosition;
@@ -23,7 +21,6 @@ public class BallInput : MonoBehaviour {
   Vector3 finalDirection;
 
   private Vector3 finalHitPoint;
-  bool chargingUpwards = true;
   float currentCharge;
 
   private PlayerController player;

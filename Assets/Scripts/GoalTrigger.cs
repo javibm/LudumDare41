@@ -22,8 +22,12 @@ public class GoalTrigger : MonoBehaviour {
     {
       if (ballRigidbody.velocity.magnitude < velocityMagnitudeWin)
       {
-        Debug.LogError("TERMINÓ");
+        ballRigidbody.useGravity = false;
+        ballRigidbody.transform.position = Vector3.Lerp(ballRigidbody.transform.position, _ballEndTransform.position, 5f * Time.deltaTime);
       }
     }
   }
+
+  [SerializeField]
+  private Transform _ballEndTransform;
 }
