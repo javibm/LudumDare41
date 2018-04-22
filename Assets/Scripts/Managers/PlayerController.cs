@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     void Awake()
     {
-        shouldMove = true;
+        shouldMove = false;
+        Invoke("ResumeMovement", 1.8f);
     }
     void Start()
     {
@@ -28,10 +29,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-      if (transform.position.y < -1.5)
-      {
-        GameController.Instance.EndGame();
-      }
+        if (transform.position.y < -1.5)
+        {
+            GameController.Instance.EndGame();
+        }
     }
 
     void FixedUpdate()
