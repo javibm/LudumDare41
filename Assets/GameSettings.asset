@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destructionTime: 4
   _levels:
-  - StartRow: 19
-    StartCol: 9
+  - StartRow: 14
+    StartCol: 10
     GoalRow: 14
-    GoalCol: 10
+    GoalCol: 3
   - StartRow: 24
     StartCol: 7
     GoalRow: 2
