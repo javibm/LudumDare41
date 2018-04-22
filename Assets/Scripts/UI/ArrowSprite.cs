@@ -14,7 +14,6 @@ public class ArrowSprite : MonoBehaviour {
 
   private void OnEnable()
   {
-    GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
     GameController.OnBallShot     += OnBallShotHandler;
   }
 
@@ -31,13 +30,13 @@ public class ArrowSprite : MonoBehaviour {
   public void EnableArrow(bool enabled)
   {
     canvas.enabled = enabled;
-    canvas.transform.parent.eulerAngles = new Vector3(90, 0, 0);
+    canvas.transform.parent.eulerAngles = Vector3.zero;
   }
 
-  public void RotateArrow(Vector3 position)
+  public void RotateArrow(Vector3 rotation)
   {
-    canvas.transform.parent.position = position;
-    //canvas.transform.parent.LookAt(position);
+    canvas.transform.parent.rotation = Quaternion.LookRotation(rotation);
+    canvas.transform.parent.eulerAngles = new Vector3(0, canvas.transform.parent.eulerAngles.y + 90, 0);
   }
 
 }
