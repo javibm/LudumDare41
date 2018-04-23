@@ -12,6 +12,14 @@ public class MapGenerator : MonoBehaviour
     void Awake()
     {
         _mapTiles = new List<MapTile>();
+        _heightMaterials = new List<Material>();
+        Renderer r = _tilePrefabs[1].GetVariant(0).GetComponentInChildren<Renderer>();
+        for(int i = 0; i < _tileHeights.Length; i++)
+        {
+            Material m = new Material(r.sharedMaterial);
+            m.color = _tileColors[i];
+            _heightMaterials.Add(m);
+        }
     }
 
     public void Init(GameSettings.LevelSettings level, float destructionTime)
@@ -209,17 +217,17 @@ public class MapGenerator : MonoBehaviour
         switch (prefabIndex)
         {
             case 0: // Empty
-                r.material.color = _tileColors[0];
+                r.material = _heightMaterials[0];
                 break;
             case 1: // Floor
-                r.material.color = _tileColors[yIndex];
+                r.material = _heightMaterials[yIndex];
                 break;
             case 2: // Wall
-                r.material.color = _tileColors[UnityEngine.Random.Range(0, 4)];
+                r.material = _heightMaterials[UnityEngine.Random.Range(0, 4)];
                 break;
             case 3: // Slope
             case 4: // Slope plus
-                r.material.color = _tileColors[1];
+                r.material = _heightMaterials[1];
                 break;
             default:
                 break;
@@ -227,6 +235,8 @@ public class MapGenerator : MonoBehaviour
         _mapTiles.Add(mt);
         mt.transform.SetParent(transform);
     }
+
+    private List<Material> _heightMaterials;
 
     private void ChangeSkybox()
     {
