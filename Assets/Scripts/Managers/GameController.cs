@@ -56,7 +56,7 @@ public class GameController : Singleton<GameController>
   }
 
   public static bool _tutorialPlayed = false;
-  private static bool _levelWon = false;
+  public static bool _levelWon = false;
   private static int _levelToPlay;
 
   public void PlayerMovementTurn()

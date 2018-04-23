@@ -9,7 +9,7 @@ public class GameMenuUIController : MonoBehaviour
   void Awake()
   {
     retryButton.onClick.AddListener(OnRetryButtonClick);
-    nextButton.onClick.AddListener(OnRetryButtonClick);
+    nextButton.onClick.AddListener(OnNextButtonClick);
     menuButton.onClick.AddListener(OnMenuButtonClick);
     GameOverPanel.SetActive(false);
   }
@@ -18,6 +18,13 @@ public class GameMenuUIController : MonoBehaviour
   {
     GameController.OnEndGame += ShowGameOver;
     GameController.OnPlayerWin += ShowWin;
+  }
+  
+  private void OnNextButtonClick()
+  {
+    GameController._levelWon = true;
+    GameController.Instance.ButtonClick();
+    ReloadScene();
   }
 
   private void OnRetryButtonClick()
@@ -38,7 +45,6 @@ public class GameMenuUIController : MonoBehaviour
     winText.SetActive(false);
     loseText.SetActive(true);
     retryButton.gameObject.SetActive(true);
-    nextButton.gameObject.SetActive(false);
   }
 
   private void ShowWin()
@@ -47,7 +53,6 @@ public class GameMenuUIController : MonoBehaviour
     winText.SetActive(true);
     loseText.SetActive(false);
     retryButton.gameObject.SetActive(false);
-    nextButton.gameObject.SetActive(true);
   }
 
   private void ReloadScene()
@@ -58,7 +63,7 @@ public class GameMenuUIController : MonoBehaviour
   void OnDestroy()
   {
     retryButton.onClick.RemoveListener(OnRetryButtonClick);
-    nextButton.onClick.RemoveListener(OnRetryButtonClick);
+    nextButton.onClick.RemoveListener(OnNextButtonClick);
     menuButton.onClick.RemoveListener(OnMenuButtonClick);
     GameController.OnEndGame -= ShowGameOver;
     GameController.OnPlayerWin -= ShowWin;
