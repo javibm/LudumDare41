@@ -44,6 +44,8 @@ public class AudioManager : MonoBehaviour
         GameController.OnCharacterLava += PlayCharacterLava;
         GameController.OnButtonClicked += PlayButton;
         GameController.OnBallHit += PlayBounce;
+
+        PlayParirTime();
     }
 
     private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f, float variation = 0.0f)
