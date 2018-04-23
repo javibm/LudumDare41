@@ -58,7 +58,7 @@ MonoBehaviour:
     GoalRow: 25
     GoalCol: 13
   - StartRow: 2
-    StartCol: 24
+    StartCol: 27
     GoalRow: 28
     GoalCol: 17
   - StartRow: 31
@@ -73,7 +73,7 @@ MonoBehaviour:
     StartCol: 16
     GoalRow: 25
     GoalCol: 6
-  - StartRow: 4
+  - StartRow: 12
     StartCol: 7
     GoalRow: 20
     GoalCol: 12

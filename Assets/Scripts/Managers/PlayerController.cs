@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         shouldMove = false;
-        Invoke("StartMovement", 1.7f);
+        Invoke("StartMovement", 1.73f);
     }
     void Start()
     {
