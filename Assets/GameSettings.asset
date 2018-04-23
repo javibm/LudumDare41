@@ -22,11 +22,11 @@ MonoBehaviour:
     GoalRow: 2
     GoalCol: 14
   - StartRow: 2
-    StartCol: 25
+    StartCol: 27
     GoalRow: 4
     GoalCol: 12
   - StartRow: 23
-    StartCol: 23
+    StartCol: 27
     GoalRow: 3
     GoalCol: 9
   - StartRow: 34
@@ -38,11 +38,11 @@ MonoBehaviour:
     GoalRow: 1
     GoalCol: 29
   - StartRow: 11
-    StartCol: 24
+    StartCol: 26
     GoalRow: 30
     GoalCol: 30
   - StartRow: 23
-    StartCol: 1
+    StartCol: 5
     GoalRow: 21
     GoalCol: 30
   - StartRow: 31
@@ -54,7 +54,7 @@ MonoBehaviour:
     GoalRow: 15
     GoalCol: 15
   - StartRow: 2
-    StartCol: 16
+    StartCol: 18
     GoalRow: 25
     GoalCol: 13
   - StartRow: 2
