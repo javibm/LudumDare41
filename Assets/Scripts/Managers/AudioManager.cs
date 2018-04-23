@@ -46,13 +46,13 @@ public class AudioManager : MonoBehaviour
         GameController.OnBallHit += PlayBounce;
     }
 
-    private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f)
+    private void PlaySound(AudioType audioType, bool loop = false, float pitch = 0.0f, float variation = 0.0f)
     {
         if (!_audios[(int)audioType].audioClips[0].isPlaying)
         {
             if (pitch != 0.0f)
             {
-                _audios[(int)audioType].audioClips[0].pitch = Random.Range(pitch - 0.2f, pitch + 0.2f);
+                _audios[(int)audioType].audioClips[0].pitch = Random.Range(pitch - variation, pitch + variation);
             }
             _audios[(int)audioType].audioClips[0].loop = loop;
             _audios[(int)audioType].audioClips[0].Play();
@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour
 
     private void PlayRunning()
     {
-        PlaySound(AudioType.Step00, false, 1.0f);
+        PlaySound(AudioType.Step00, false, 1.0f, 0.25f);
     }
 
     private void StopRunning()
@@ -140,7 +140,7 @@ public class AudioManager : MonoBehaviour
 
     private void PlayBounce()
     {
-        PlaySound(AudioType.Bounce, false, 1.0f);
+        PlaySound(AudioType.Bounce, false, 2.0f, 0.3f);
     }
 
     void OnDestroy()
