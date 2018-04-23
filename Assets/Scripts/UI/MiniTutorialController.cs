@@ -5,30 +5,36 @@ using UnityEngine;
 public class MiniTutorialController : MonoBehaviour {
 
 	void Start () {
-    if (GameController._tutorialPlayed)
-    {
-      move.SetActive(false);
-      drag.SetActive(false);
-      Destroy(this);
-    }
     move.SetActive(false);
     drag.SetActive(false);
+    if (GameController._tutorialPlayed)
+    {
+      Destroy(this);
+    }
+    else
+    {
+      GameController.OnBallReady += OnBallReadyHandler;
+    }
 
-    GameController.OnBallReady += OnBallReadyHandler;
-    GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
-    GameController.OnBallShot += OnBallShotHandler;
   }
 
   void OnDestroy()
   {
-    GameController.OnBallReady -= OnBallReadyHandler;
     GameController.OnMinigolfTurn -= OnMinigolfTurnHandler;
     GameController.OnBallShot -= OnBallShotHandler;
+    GameController.OnEndGame -= OnEndGameHandler;
+    GameController.OnPlayerWin -= OnEndGameHandler;
   }
 
   void OnBallReadyHandler()
   {
     move.SetActive(true);
+    GameController.OnMinigolfTurn += OnMinigolfTurnHandler;
+    GameController.OnBallShot += OnBallShotHandler;
+    GameController.OnEndGame += OnEndGameHandler;
+    GameController.OnPlayerWin += OnEndGameHandler;
+
+    GameController.OnBallReady -= OnBallReadyHandler;
   }
 
   void OnMinigolfTurnHandler()
@@ -40,14 +46,17 @@ public class MiniTutorialController : MonoBehaviour {
   void OnBallShotHandler()
   {
     drag.SetActive(false);
-    Destroy(this);
+    move.SetActive(true);
+  }
+
+  void OnEndGameHandler()
+  {
+    drag.SetActive(false);
+    move.SetActive(false);
   }
 
   [SerializeField]
   private GameObject move;
-
-  [SerializeField]
-  private GameObject click;
 
   [SerializeField]
   private GameObject drag;
