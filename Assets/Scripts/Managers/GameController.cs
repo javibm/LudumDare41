@@ -32,8 +32,26 @@ public class GameController : Singleton<GameController>
 
   void Start()
   {
+    if(_levelsList == null)
+    {
+      _levelsList = new List<int>();
+      _levelsList.Add(0);
+      for(int i = 1; i < _gameSettings.Levels.Count; i++)
+      {
+        _levelsList.Insert(UnityEngine.Random.Range(1,_levelsList.Count), i);
+        Debug.Log(i);
+      }
+      string asd = "";
+      foreach(int i in _levelsList)
+      {
+        asd = asd + i + ",";
+      }
+      Debug.Log(asd);
+    }
     StartGame();
   }
+
+  private static List<int> _levelsList = null;
 
   public void StartGame()
   {
@@ -41,7 +59,11 @@ public class GameController : Singleton<GameController>
     {
       if (_levelWon)
       {
-        _levelToPlay = UnityEngine.Random.Range(1, _gameSettings.Levels.Count);
+        _levelToPlay++;
+        if(_levelToPlay >= _levelsList.Count)
+        {
+          _levelToPlay = 1;
+        }
         _levelWon = false;
       }
     }
@@ -50,8 +72,8 @@ public class GameController : Singleton<GameController>
       _levelToPlay = 0;
       _tutorialPlayed = true;
     }
-    Debug.Log("Loading level " + _levelToPlay);
-    _mapGenerator.Init(_gameSettings.Levels[_levelToPlay], _gameSettings.DestructionTime);
+    Debug.Log("Loading level " + _levelsList[_levelToPlay]);
+    _mapGenerator.Init(_gameSettings.Levels[_levelsList[_levelToPlay]], _gameSettings.DestructionTime);
     OnStartGame();
   }
 
