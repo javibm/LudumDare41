@@ -5,6 +5,12 @@ using UnityEngine;
 public class MiniTutorialController : MonoBehaviour {
 
 	void Start () {
+    if (GameController._tutorialPlayed)
+    {
+      move.SetActive(false);
+      drag.SetActive(false);
+      Destroy(this);
+    }
     move.SetActive(false);
     drag.SetActive(false);
 
@@ -22,7 +28,7 @@ public class MiniTutorialController : MonoBehaviour {
 
   void OnBallReadyHandler()
   {
-      move.SetActive(true);
+    move.SetActive(true);
   }
 
   void OnMinigolfTurnHandler()
