@@ -5,7 +5,7 @@ using UnityEngine;
 public class GoalTrigger : MonoBehaviour
 {
     [SerializeField]
-    private float velocityMagnitudeWin = 0.75f;
+    private float velocityMagnitudeWin = 1.5f;
 
     private Rigidbody ballRigidbody;
 

@@ -25,6 +25,5 @@ public class BallMovement : MonoBehaviour {
   {
     ballRigidbody.velocity        = Vector3.zero;
     ballRigidbody.angularVelocity = Vector3.zero;
-
   }
 }

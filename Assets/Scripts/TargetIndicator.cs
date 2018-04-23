@@ -2,13 +2,26 @@
 using UnityEngine.UI;
 public class TargetIndicator : MonoBehaviour
 {
+
     void Start()
     {
         mainCamera = Camera.main;
         mainCanvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         Debug.Assert((mainCanvas != null), "There needs to be a Canvas object in the scene for the OTI to display");
         InstainateTargetIcon();
+
+        GameController.OnEndGame += DisableTargetIndicator;
+        GameController.OnPlayerWin += DisableTargetIndicator;
     }
+
+
+    private void OnDestroy()
+    {
+        GameController.OnEndGame -= DisableTargetIndicator;
+        GameController.OnPlayerWin -= DisableTargetIndicator;
+    }
+
+
     void Update()
     {
         if (ShowDebugLines)
@@ -77,6 +90,17 @@ public class TargetIndicator : MonoBehaviour
         Debug.DrawLine(mainCamera.transform.position, forwardPlaneCenter, Color.blue);
         Debug.DrawLine(forwardPlaneCenter, forwardPlaneCenter + cameraUp, Color.green);
         Debug.DrawLine(forwardPlaneCenter, forwardPlaneCenter + cameraRight, Color.red);
+    }
+
+    private void DisableTargetIndicator()
+    {
+        if (m_iconImage)
+        {
+
+            m_iconImage.enabled = false;
+            Destroy(m_iconImage.gameObject);
+            this.enabled = false;
+        }
     }
 
     private Camera mainCamera;
