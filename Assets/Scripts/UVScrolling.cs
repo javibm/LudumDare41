@@ -8,21 +8,24 @@ public class UVScrolling : MonoBehaviour
     public Vector2 uvAnimationRate = new Vector2(1.0f, 0.0f);
     public string textureName = "_MainTex";
 
-    private new Renderer renderer;
+    private Renderer rend;
+
+    private Material material;
 
     Vector2 uvOffset = Vector2.zero;
 
     void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();
+        material = rend.materials[materialIndex];
     }
 
     void LateUpdate()
     {
         uvOffset += (uvAnimationRate * Time.deltaTime);
-        if (renderer.enabled)
+        if (rend.enabled)
         {
-            renderer.materials[materialIndex].SetTextureOffset(textureName, uvOffset);
+            material.SetTextureOffset(textureName, uvOffset);
         }
     }
 }
