@@ -11,12 +11,14 @@ public class TargetIndicator : MonoBehaviour
     InstainateTargetIcon();
 
     GameController.OnEndGame += DisableTargetIndicator;
+    GameController.OnPlayerWin += DisableTargetIndicator;
   }
 
 
   private void OnDestroy()
   {
     GameController.OnEndGame -= DisableTargetIndicator;
+    GameController.OnPlayerWin -= DisableTargetIndicator;
   }
 
 
