@@ -11,8 +11,11 @@ public class MiniTutorialController : MonoBehaviour {
     {
       Destroy(this);
     }
+    else
+    {
+      GameController.OnBallReady += OnBallReadyHandler;
+    }
 
-    GameController.OnBallReady += OnBallReadyHandler;
   }
 
   void OnDestroy()
